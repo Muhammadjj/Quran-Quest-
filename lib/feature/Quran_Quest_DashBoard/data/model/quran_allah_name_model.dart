@@ -16,7 +16,6 @@ class QuranAllahNameModel {
     final meaning = enData?['meaning']?.toString().trim() ?? '';
 
     log("Parsing JSON - Transliteration: '$transliteration'");
-    log("Parsing JSON - Meaning: '$meaning'");
 
     return QuranAllahNameModel(
       name: json['name']?.toString() ?? '',
