@@ -39,7 +39,7 @@ class QuranQuest extends StatelessWidget {
           supportedLocales: context.supportedLocales,
           locale: context.locale,
           theme: quranTheme,
-          // home: const LandingPage(),
+          // home:
         );
       },
     );

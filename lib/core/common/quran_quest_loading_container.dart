@@ -11,7 +11,7 @@ class QuranLoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height * 0.2,
+      height: height * 0.4,
       width: width,
       child: const Center(
         child: CircularProgressIndicator(

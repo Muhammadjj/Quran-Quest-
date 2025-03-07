@@ -9,6 +9,7 @@ import 'package:quran_quest/feature/Quran_Quest_DashBoard/data/model/random_card
 import 'package:quran_quest/feature/Quran_Quest_DashBoard/presentation/bloc/random_ayah_bloc.dart';
 import 'package:quran_quest/feature/Quran_Quest_DashBoard/presentation/widgets/Dashboard_Widgets/dashboard_drawer.dart';
 import 'package:quran_quest/feature/Quran_Quest_DashBoard/presentation/widgets/Dashboard_Widgets/dashboard_verses_card_widget.dart';
+import 'package:quran_quest/feature/Quran_Quest_DashBoard/presentation/widgets/Dashboard_Widgets/quran_allah_name_card.dart';
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({super.key});
@@ -21,7 +22,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   //* Global Key for Scaffold
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  late QuranAllahNameModel quranAllahNameModel;
+  QuranAllahNameModel? quranAllahNameModel;
 
   @override
   void initState() {
@@ -32,10 +33,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   }
 
   void randomAllahName() {
-    var index = Random().nextInt(allNameModel.length);
+    final index = Random().nextInt(allahNameModel.length);
     setState(() {
       // * Update Allah Name Model
-      quranAllahNameModel = allNameModel[index];
+      quranAllahNameModel = allahNameModel[index];
     });
   }
 
@@ -43,7 +44,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: const Color.fromARGB(255, 48, 48, 48),
+      backgroundColor: AppColors.kCharcoalGray,
       drawer: const DashBoardDrawerWidget(),
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -55,97 +56,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 _buildAppBarSection(width, height),
                 _buildVersesCardSection(width, height),
                 SizedBox(height: 20.h),
-                Container(
-                  height: height * 0.2,
-                  width: width * 0.94,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12.r),
-                    color: AppColors.kDimGray,
-                  ),
-                  child: Row(
-                    children: [
-                      //! Left Side - Image Full Height
-                      Expanded(
-                        flex: 3, //* 30% width
-                        child: Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(12.r),
-                                topLeft: Radius.circular(12.r),
-                              ),
-                              child: Image.asset(
-                                AppImages.cardPaperImage,
-                                fit: BoxFit.fill,
-                                width: double.infinity,
-                                height: double.infinity,
-                              ),
-                            ),
-                            //! Image ke upar Name Center me
-                            Positioned(
-                              child: AutoSizeText(
-                                quranAllahNameModel.name,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium
-                                    ?.copyWith(
-                                      color: AppColors.kWhite,
-                                      fontSize: 25.sp,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-
-                      //! Right Side - Column Centered
-                      Expanded(
-                        flex: 7, //* 70% width
-                        child: Center(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              AutoSizeText(
-                                quranAllahNameModel.transliteration,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium
-                                    ?.copyWith(
-                                      fontSize: 16.sp,
-                                      color: AppColors.kWhite,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                              ),
-                              AutoSizeText(
-                                quranAllahNameModel.meaning,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium
-                                    ?.copyWith(
-                                      fontSize: 16.sp,
-                                      color: AppColors.kWhite,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                              ),
-                              AutoSizeText(
-                                quranAllahNameModel.number.toString(),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium
-                                    ?.copyWith(
-                                      fontSize: 16.sp,
-                                      color: AppColors.kWhite,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                QuranAllahNameCard(
+                  height: height,
+                  width: width,
+                  quranAllahNameModel: quranAllahNameModel!,
                 ),
                 SizedBox(height: 20.h),
               ],
@@ -203,35 +117,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   }
 
   //! Method to build Verses Card Section
-  // Widget _buildVersesCardSection(double width, double height) {
-  //   return BlocBuilder<RandomAyahBloc, RandomAyahState>(
-  //     builder: (context, state) {
-  //       if (state is RandomAyahLoading) {
-  //         return QuranLoadingWidget(height: height, width: width);
-  //       } else if (state is RandomAyahLoadedState) {
-  //         final randomAyahState = state.randomAyah;
-  //         return QuranVerseCard(
-  //           height: height,
-  //           width: width,
-  //           verseArabic:
-  //               randomAyahState.text ?? 'فَإِنَّ مَعَ الْعُسْرِ يُسْرًا',
-  //           surahName:
-  //               randomAyahState.surah?.englishName ?? 'Surah Al-Inshirah',
-  //           verseNumber: randomAyahState.numberInSurah ?? 6,
-  //           juz: randomAyahState.juz ?? 30,
-  //           manzil: randomAyahState.manzil ?? 7,
-  //         );
-  //       } else if (state is RandomAyahError) {
-  //         return Center(
-  //           child: AutoSizeText(state.error.message),
-  //         );
-  //       } else {
-  //         return const Center(child: AutoSizeText('Error'));
-  //       }
-  //     },
-  //   );
-  // }
-
   Widget _buildVersesCardSection(double width, double height) {
     return BlocSelector<RandomAyahBloc, RandomAyahState, RandomAyah?>(
       selector: (state) {

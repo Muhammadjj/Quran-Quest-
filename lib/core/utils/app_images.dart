@@ -10,6 +10,8 @@ class AppImages {
   static const String dashBoardTopImage = '$_imagePath/quran_dashboard.png';
   static const String mosqueBGRemover = '$_imagePath/bg_remove_mosque.png';
   static const String cardPaperImage = '$_imagePath/card_paper.png';
+  static const String quranFrame = '$_imagePath/quran_frame.png';
+  static const String shadowMosque = '$_imagePath/shadow_mosque.png';
 
   // * SVG Images
   static const String quranIconSVG = '$_svgImagePath/quran_dashboard.svg';

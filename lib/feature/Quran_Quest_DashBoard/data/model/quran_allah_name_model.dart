@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 class QuranAllahNameModel {
   QuranAllahNameModel({
     required this.name,
@@ -7,13 +9,23 @@ class QuranAllahNameModel {
   });
 
   factory QuranAllahNameModel.fromJson(Map<String, dynamic> json) {
+    final transliteration = json['transliteration']?.toString().trim() ?? '';
+
+    final enData = json['en'] as Map<String, dynamic>?;
+
+    final meaning = enData?['meaning']?.toString().trim() ?? '';
+
+    log("Parsing JSON - Transliteration: '$transliteration'");
+    log("Parsing JSON - Meaning: '$meaning'");
+
     return QuranAllahNameModel(
-      name: json['name'] as String? ?? '',
-      transliteration: json['transliteration'] as String? ?? '',
+      name: json['name']?.toString() ?? '',
+      transliteration: transliteration,
       number: json['number'] as int? ?? 0,
-      meaning: (json['en']?['meaning'] as String?) ?? '',
+      meaning: meaning,
     );
   }
+
   //! Member Variables
   final String name;
   final String transliteration;
@@ -23,7 +35,7 @@ class QuranAllahNameModel {
 
 /// ! List of Allah Names in Quran with their meaning
 ///! and transliteration in English and Arabic Language
-List<QuranAllahNameModel> allNameModel = (allahNameJson['data'] as List)
+List<QuranAllahNameModel> allahNameModel = (allahNameJson['data'] as List)
     .map<QuranAllahNameModel>(
       (e) => QuranAllahNameModel.fromJson(e as Map<String, dynamic>),
     )

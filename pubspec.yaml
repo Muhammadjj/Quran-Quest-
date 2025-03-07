@@ -38,8 +38,11 @@ dependencies:
   get_it: ^8.0.3
 # ! Using SVG images in Flutter
   flutter_svg: ^2.0.17
+# ! Using new Icon 
   iconsax: ^0.0.8
   easy_localization: ^3.0.7+1
+# !This is a Flutter package for a Tinder-like card swiper.✨
+  flutter_card_swiper: ^7.0.2
   
   
  

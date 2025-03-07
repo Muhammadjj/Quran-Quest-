@@ -31,8 +31,8 @@ final ThemeData quranTheme = ThemeData(
 TextTheme _getQuranTextTheme() {
   return TextTheme(
     displayLarge: TextStyle(
-      fontFamily: 'Amiri',
-      color: AppColors.primaryText,
+      fontFamily: 'MeQuran',
+      color: AppColors.kWhite,
       fontSize: 40.sp,
       overflow: TextOverflow.ellipsis,
       fontWeight: FontWeight.bold,

@@ -66,6 +66,7 @@ class AppColors {
   static Color kGray600 = const Color(0XFF707B81);
   static Color kGrey200 = Colors.grey.shade200;
   static Color kGrey400 = Colors.grey.shade400;
+  static Color kCharcoalGray = const Color.fromARGB(255, 48, 48, 48);
 
   // ! Green
   static Color kGreen = '00C24F'.toColorExt();

@@ -43,9 +43,9 @@ class QuranVerseCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(12.r),
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.1),
-          blurRadius: 6,
-          offset: const Offset(0, 3),
+          color: Colors.black.withOpacity(0.2),
+          blurRadius: 8,
+          offset: Offset(2, 4),
         ),
       ],
     ).paddingAll(12.sp);

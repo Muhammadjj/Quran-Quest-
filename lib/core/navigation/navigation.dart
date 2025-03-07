@@ -7,6 +7,7 @@ import 'package:quran_quest/feature/Quran_Quest_DashBoard/data/repo/ayah_reposit
 import 'package:quran_quest/feature/Quran_Quest_DashBoard/domain/usecases/get_random_ayah.dart';
 import 'package:quran_quest/feature/Quran_Quest_DashBoard/presentation/bloc/random_ayah_bloc.dart';
 import 'package:quran_quest/feature/Quran_Quest_DashBoard/presentation/view/quran_dashboard.dart';
+import 'package:quran_quest/feature/Quran_Quest_DashBoard/presentation/widgets/Allah_Name_Card_Swiper_Widget/allah_name_swiper_widget.dart';
 import 'package:quran_quest/feature/Quran_Quest_DashBoard/presentation/widgets/Landing_Page_Widgets/landing_page.dart';
 
 part 'route_name.dart';
