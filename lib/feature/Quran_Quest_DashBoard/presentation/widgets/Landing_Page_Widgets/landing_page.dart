@@ -1,6 +1,4 @@
-import 'package:quran_quest/export/export.dart';
-import 'package:quran_quest/feature/Quran_Quest_DashBoard/presentation/widgets/Landing_Page_Widgets/bottom_navigation_bar_items.dart';
-import 'package:quran_quest/feature/Quran_Quest_DashBoard/presentation/widgets/Landing_Page_Widgets/list_of_pages.dart';
+part of '../widgets.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -10,7 +8,7 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
-  ValueNotifier<int> bottomNavigatorTrigger = ValueNotifier(0);
+  ValueNotifier<int> bottomNavigatorTrigger = ValueNotifier(1);
   final PageStorageBucket bucket = PageStorageBucket();
 
   // screen size
@@ -49,7 +47,7 @@ class _LandingPageState extends State<LandingPage> {
       child: Container(
         width: double.infinity,
         height: size.height * 0.10,
-        padding: const EdgeInsets.only(top: 10, right: 30, left: 30),
+        padding: EdgeInsets.only(top: 10.h, right: 30.w, left: 30.w),
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20),
@@ -67,7 +65,7 @@ class _LandingPageState extends State<LandingPage> {
           BottomNavigationItem(
             itemIndex: 1,
             notifier: bottomNavigatorTrigger,
-            assets: AppImages.mosqueIconSVG,
+            assets: AppImages.homeFavoriteSVG,
           ),
           const Spacer(),
           BottomNavigationItem(
@@ -75,12 +73,12 @@ class _LandingPageState extends State<LandingPage> {
             notifier: bottomNavigatorTrigger,
             assets: AppImages.prayIconSVG,
           ),
-          const Spacer(),
-          BottomNavigationItem(
-            itemIndex: 3,
-            notifier: bottomNavigatorTrigger,
-            assets: AppImages.chapletIconSVG,
-          ),
+          // const Spacer(),
+          // BottomNavigationItem(
+          //   itemIndex: 3,
+          //   notifier: bottomNavigatorTrigger,
+          //   assets: AppImages.chapletIconSVG,
+          // ),
         ].addRow(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceAround,

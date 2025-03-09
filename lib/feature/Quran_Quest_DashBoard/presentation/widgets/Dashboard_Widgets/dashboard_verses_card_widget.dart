@@ -1,22 +1,14 @@
-import 'package:quran_quest/export/export.dart';
+part of '../widgets.dart';
 
 class QuranVerseCard extends StatelessWidget {
   const QuranVerseCard({
-    required this.verseArabic,
-    required this.surahName,
-    required this.verseNumber,
+    required this.randomAyah,
     required this.height,
     required this.width,
-    required this.juz,
-    required this.manzil,
     super.key,
   });
 
-  final String verseArabic;
-  final String surahName;
-  final int verseNumber;
-  final int juz;
-  final int manzil;
+  final RandomAyah randomAyah;
   final double height;
   final double width;
 
@@ -45,7 +37,7 @@ class QuranVerseCard extends StatelessWidget {
         BoxShadow(
           color: Colors.black.withOpacity(0.2),
           blurRadius: 8,
-          offset: Offset(2, 4),
+          offset: const Offset(2, 4),
         ),
       ],
     ).paddingAll(12.sp);
@@ -72,7 +64,7 @@ class QuranVerseCard extends StatelessWidget {
           ),
         ),
         AutoSizeText(
-          '$surahName [$juz : $manzil]',
+          '${randomAyah.surah?.englishName ?? 'Surah Al-Inshirah'} \t\t[${randomAyah.juz ?? 30} : ${randomAyah.manzil ?? 7}]',
           style: TextStyle(
             fontSize: 14.sp,
             fontWeight: FontWeight.bold,
@@ -95,7 +87,7 @@ class QuranVerseCard extends StatelessWidget {
   //! Method to build Arabic Verse
   AutoSizeText _buildArabicVerse({required BuildContext context}) {
     return AutoSizeText(
-      verseArabic,
+      randomAyah.text ?? 'فَإِنَّ مَعَ الْعُسْرِ يُسْرًا',
       textAlign: TextAlign.center,
       style: Theme.of(context).textTheme.bodyMedium,
     );

@@ -45,20 +45,20 @@ TextTheme _getQuranTextTheme() {
       color: AppColors.black,
     ),
     bodySmall: TextStyle(
-      fontFamily: 'Amiri',
+      fontFamily: 'AmiriQuran',
       fontSize: 14.sp,
       color: AppColors.secondaryText,
       fontWeight: FontWeight.w400,
     ),
     headlineSmall: TextStyle(
-      fontFamily: 'Amiri',
+      fontFamily: 'AmiriQuran',
       color: AppColors.primaryText,
       fontSize: 18.sp,
       height: 1.2,
       fontWeight: FontWeight.w600,
     ),
     titleLarge: TextStyle(
-      fontFamily: 'Amiri',
+      fontFamily: 'AmiriQuran',
       color: AppColors.primaryGreen,
       fontSize: 20.sp,
       fontWeight: FontWeight.w600,

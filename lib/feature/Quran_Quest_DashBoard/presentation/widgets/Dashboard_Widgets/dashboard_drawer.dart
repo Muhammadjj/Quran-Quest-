@@ -1,4 +1,4 @@
-import 'package:quran_quest/export/export.dart';
+part of '../widgets.dart';
 
 class DashBoardDrawerWidget extends StatelessWidget {
   const DashBoardDrawerWidget({

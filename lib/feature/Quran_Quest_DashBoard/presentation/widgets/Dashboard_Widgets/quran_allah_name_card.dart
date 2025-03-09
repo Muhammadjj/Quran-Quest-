@@ -1,6 +1,4 @@
-import 'package:quran_quest/core/navigation/navigation.dart';
-import 'package:quran_quest/export/export.dart';
-import 'package:quran_quest/feature/Quran_Quest_DashBoard/data/model/quran_allah_name_model.dart';
+part of '../widgets.dart';
 
 class QuranAllahNameCard extends StatelessWidget {
   const QuranAllahNameCard({
@@ -73,10 +71,10 @@ class QuranAllahNameCard extends StatelessWidget {
             flex: 7, //* 70% width
             child: Center(
               child: <Widget>[
-                AutoSizeText(
+                Text(
                   quranAllahNameModel.transliteration,
                   maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+                  overflow: TextOverflow.visible,
                   softWrap: true,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         fontSize: 16.sp,
@@ -87,10 +85,10 @@ class QuranAllahNameCard extends StatelessWidget {
                 AutoSizeText(
                   quranAllahNameModel.meaning,
                   maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+                  overflow: TextOverflow.fade,
                   softWrap: true,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        fontSize: 16.sp,
+                        fontSize: 20.sp,
                         color: AppColors.kWhite,
                         fontWeight: FontWeight.w500,
                       ),
@@ -98,7 +96,7 @@ class QuranAllahNameCard extends StatelessWidget {
                 AutoSizeText(
                   quranAllahNameModel.number.toString(),
                   maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+                  overflow: TextOverflow.fade,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         fontSize: 16.sp,
                         color: AppColors.kWhite,

@@ -40,21 +40,33 @@ dependencies:
   flutter_svg: ^2.0.17
 # ! Using new Icon 
   iconsax: ^0.0.8
+# ! Using Localization multiple languages
   easy_localization: ^3.0.7+1
 # !This is a Flutter package for a Tinder-like card swiper.✨
   flutter_card_swiper: ^7.0.2
+# ! Added dependencies: freezed_annotation for immutable models and json_annotation for JSON serialization.
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.9.0
+  flutter_staggered_grid_view: ^0.7.0
+  
   
   
  
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: ^2.4.15
+  flutter_lints: ^5.0.0 
   pretty_dio_logger: ^1.4.0
-  easy_localization_generator: ^0.3.3
+  easy_localization_generator: ^0.3.3 
 
-  flutter_lints: ^5.0.0
+  build_runner: ^2.4.15
+#! Added freezed for immutable data classes and json_serializable for JSON serialization.
+  freezed: ^2.4.1
+  json_serializable: 6.9.0
+  
   very_good_analysis: ^7.0.0
+  
+  
 
 
 flutter:
