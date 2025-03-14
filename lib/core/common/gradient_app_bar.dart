@@ -1,34 +1,31 @@
 part of 'common.dart';
 
 class GradientAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const GradientAppBar({required this.title, super.key});
+  const GradientAppBar({
+    required this.title,
+    required this.context,
+    this.bottom,
+    super.key,
+  });
   final String title;
-
+  final PreferredSizeWidget? bottom;
+  final BuildContext context;
   @override
   Widget build(BuildContext context) {
     return AppBar(
       title: AutoSizeText(
         title,
-        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+        style: Theme.of(context).textTheme.titleMedium?.copyWith(
               color: AppColors.kBlack,
               fontWeight: FontWeight.bold,
+              fontFamily: 'AmiriQuran',
             ),
-      ),
+      ).paddingBottom(15),
       centerTitle: true,
-      flexibleSpace: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              AppColors.softGold, //* Default Soft Gold
-              AppColors.deepGreen, //* Default Deep Green
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-        ),
-      ),
+      flexibleSpace: Container().withQuranGoldenGradient(),
       elevation: 4,
       backgroundColor: Colors.transparent, //* Important for gradient effect
+      bottom: bottom,
     );
   }
 

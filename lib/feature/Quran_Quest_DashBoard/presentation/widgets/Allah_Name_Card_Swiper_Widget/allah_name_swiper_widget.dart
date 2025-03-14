@@ -1,6 +1,4 @@
-import 'package:flutter_card_swiper/flutter_card_swiper.dart';
-import 'package:quran_quest/export/export.dart';
-import 'package:quran_quest/feature/Quran_Quest_DashBoard/data/model/quran_allah_name_model.dart';
+part of '../widgets.dart';
 
 class AllahNameCardSwiperPage extends StatelessWidget {
   const AllahNameCardSwiperPage({super.key});
@@ -11,8 +9,9 @@ class AllahNameCardSwiperPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.kCharcoalGray,
-      appBar: const GradientAppBar(
+      appBar: GradientAppBar(
         title: '99 Names of Allah [S.W.T]',
+        context: context,
       ),
       body: Stack(
         alignment: Alignment.center,
@@ -92,14 +91,15 @@ class AllahNameCardSwiperPage extends StatelessWidget {
             name.name,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                  fontSize: MediaQuery.of(context).size.width * 0.1,
+                  fontSize: 50.sp,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
+                  fontFamily: 'MeQuran',
                 ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 20),
           AutoSizeText(
-            '${name.transliteration}    [${name.number}]',
+            '${name.transliteration} [${name.number}]',
             style: TextStyle(
               fontSize: MediaQuery.of(context).size.width * 0.05,
               color: Colors.white,

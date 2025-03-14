@@ -8,9 +8,15 @@ class AppImages {
   // static const String _imagePath = 'assets/images';
   // * Dashboard Icons
   static const String dashBoardTopImage = '$_imagePath/quran_dashboard.png';
-  static const String mosqueBGRemover = '$_imagePath/bg_remove_mosque.png';
+  static const String mosqueBGRemover = '$_imagePath/bg_remove_home.png';
+  static const String quranBGRemover = '$_imagePath/bg_remove_quran.png';
   static const String cardPaperImage = '$_imagePath/card_paper.png';
   static const String quranFrame = '$_imagePath/quran_frame.png';
+  static const String circleQuranFlower = '$_imagePath/circle_quran_flower.png';
+  static const String cuteBoyReadQuran = '$_imagePath/cute_boy_quran_read.png';
+  static const String quranGridShade = '$_imagePath/quran_grid_shade.png';
+  static const String quranGridStar = '$_imagePath/quran_grid_star.png';
+
   static const String shadowMosque = '$_imagePath/shadow_mosque.png';
 
   // * SVG Images
@@ -19,6 +25,7 @@ class AppImages {
   static const String mosqueIconSVG = '$_svgImagePath/mosque.svg';
   static const String chapletIconSVG = '$_svgImagePath/chaplet.svg';
   static const String prayIconSVG = '$_svgImagePath/pray_icon.svg';
+  static const String homeFavoriteSVG = '$_svgImagePath/home_favorite.svg';
 }
 
 class AppLottie {

@@ -1,7 +1,4 @@
-import 'dart:math' as math;
-
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:quran_quest/export/export.dart';
+part of '../widgets.dart';
 
 class BottomNavigationItem extends StatelessWidget {
   const BottomNavigationItem({

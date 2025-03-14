@@ -1,6 +1,3 @@
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:quran_quest/core/extension/extension.dart';
-import 'package:quran_quest/core/navigation/navigation.dart';
 import 'package:quran_quest/export/export.dart';
 
 part 'app_colors.dart';

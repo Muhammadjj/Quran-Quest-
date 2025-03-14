@@ -13,10 +13,13 @@ class QuranAllahNameModel {
 
     final enData = json['en'] as Map<String, dynamic>?;
 
-    final meaning = enData?['meaning']?.toString().trim() ?? '';
+    final meaning =
+        enData?['meaning']?.toString().trim().replaceAll(RegExp(r'\s+'), ' ') ??
+            '';
 
     log("Parsing JSON - Transliteration: '$transliteration'");
 
+    log("Parsing JSON - Meaning: '$meaning'");
     return QuranAllahNameModel(
       name: json['name']?.toString() ?? '',
       transliteration: transliteration,
