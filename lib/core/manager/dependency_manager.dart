@@ -1,48 +1,73 @@
 part of 'managers.dart';
 
-final getIt = GetIt.instance;
-
 class DependenceManager {
+  static final sl = GetIt.instance;
   //  ! Initialize the Dependence Manager
   static Future<void> init() async {
-    await _dashBoardRandomAyah();
+    await _dashBoardRandomAyahRegisterServices();
+    await _quranAllTabsRegisterServices();
   }
 
-  //  ! DashBoard Random Ayah Register
-  static Future<void> _dashBoardRandomAyah() async {
-    getIt
+  //  ! DashBoard Random Ayah Register.
+  static Future<void> _dashBoardRandomAyahRegisterServices() async {
+    sl
+      ..registerFactory(() => RandomAyahBloc(getRandomAyah: sl()))
       ..registerLazySingleton<AyahRemoteDataSource>(
         AyahRemoteDataSourceImpl.new,
       )
       ..registerLazySingleton<AyahRepository>(
-        () => AyahRepositoryImpl(remoteDataSource: getIt()),
+        () => AyahRepositoryImpl(remoteDataSource: sl()),
       )
-      ..registerLazySingleton(() => GetRandomAyah(repository: getIt()));
+      ..registerLazySingleton(() => GetRandomAyah(repository: sl()));
   }
 
-//! fetch all GetIt functions.
+  // ! Quran All Tabs Register Classes.
+  static Future<void> _quranAllTabsRegisterServices() async {
+    sl
+      ..registerFactory(() => QuranAllTabsDataBloc(getSurahUseCasesData: sl()))
+      ..registerLazySingleton<QuranSurahRepo>(
+        () => SurahRepositoryImpl(remoteDataSourceImpl: sl()),
+      )
+      ..registerLazySingleton(() => GetQuranSurahList(surahRepo: sl()))
+      ..registerLazySingleton<SurahRemoteDataSourceImpl>(
+        SurahRemoteDataSourceImpl.new,
+      );
+  }
+
+  //! fetch all GetIt functions.
   static T get<T extends Object>() {
-    return getIt.get<T>();
+    return sl.get<T>();
   }
 
   //! *********************************************************
   //! ****************** DashBoard Random Ayah ****************
   //  ! DashBoard Random Ayah UnRegister
-  static void _dashBoardRandomAyahUnRegister() {
-    getIt
-      ..unregister<AyahRemoteDataSource>()
-      ..unregister<AyahRepository>()
-      ..unregister<GetRandomAyah>();
-  }
+  // static void _dashBoardRandomAyahUnRegister() {
+  //   getIt
+  //     ..unregister<AyahRemoteDataSource>()
+  //     ..unregister<AyahRepository>()
+  //     ..unregister<GetRandomAyah>();
+  // }
 
-  //  ! Dispose the Dependence Manager
-  static void dispose() {
-    _dashBoardRandomAyahUnRegister();
-  }
+  // //  ! Quran All Tabs UnRegister
+  // static void _quranAllTabsUnRegister() {
+  //   getIt
+  //     ..unregister<SurahRemoteDataSource>()
+  //     ..unregister<QuranSurahRepo>()
+  //     ..unregister<GetQuranSurahList>();
+  // }
 
-  //  ! Reset the Dependence Manager
-  static void reset() {
-    _dashBoardRandomAyahUnRegister();
-    _dashBoardRandomAyah();
-  }
+  // //  ! Dispose the Dependence Manager
+  // static void dispose() {
+  //   _dashBoardRandomAyahUnRegister();
+  //   _quranAllTabsUnRegister();
+  // }
+
+  // //  ! Reset the Dependence Manager
+  // static void reset() {
+  //   _dashBoardRandomAyahUnRegister();
+  //   _dashBoardRandomAyahRegisterServices();
+  //   _quranAllTabsUnRegister();
+  //   _quranAllTabsRegisterServices();
+  // }
 }

@@ -14,6 +14,8 @@ class AppImages {
   static const String quranFrame = '$_imagePath/quran_frame.png';
   static const String circleQuranFlower = '$_imagePath/circle_quran_flower.png';
   static const String cuteBoyReadQuran = '$_imagePath/cute_boy_quran_read.png';
+  static const String quranGridShade = '$_imagePath/quran_grid_shade.png';
+  static const String quranGridStar = '$_imagePath/quran_grid_star.png';
 
   static const String shadowMosque = '$_imagePath/shadow_mosque.png';
 

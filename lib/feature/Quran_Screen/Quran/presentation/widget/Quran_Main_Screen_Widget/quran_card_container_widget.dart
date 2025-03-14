@@ -20,11 +20,17 @@ class QuranSectionContainer extends StatelessWidget {
         color: AppColors.kDimGray,
         border: Border.all(color: AppColors.softGold, width: 1.5),
       ),
-      child: Row(
-        children: [
-          _buildLeftSideImage(),
-          _buildRightSideImage(),
-        ],
+      child: InkWell(
+        onTap: () {
+          //! Button Click Action
+          NavigationHelper.pushNamed(RoutesName.quranMajidMultipleTabs);
+        },
+        child: Row(
+          children: [
+            _buildLeftSideImage(),
+            _buildRightSideImage(),
+          ],
+        ),
       ),
     ).paddingAll(12.sp);
   }
@@ -38,7 +44,7 @@ class QuranSectionContainer extends StatelessWidget {
           borderRadius: BorderRadius.circular(14.r),
           child: ColorFiltered(
             colorFilter: ColorFilter.mode(
-              Colors.grey.shade600.withOpacity(0.6), // Grey Tint
+              AppColors.kGrey.withOpacity(0.6),
               BlendMode.modulate,
             ),
             child: Image.asset(
@@ -62,12 +68,12 @@ class QuranSectionContainer extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            SizedBox(height: 8.h), // Space between text & button
+            SizedBox(height: 15.h), // Space between text & button
             QuranButton(
               text: 'Read Quran',
-              onPressed: () {
-                // Button Click Action
-              },
+              height: height * 0.03,
+              width: width * 0.2,
+              // onPressed: () {},
             ),
           ]
               .addColumn(
@@ -75,8 +81,8 @@ class QuranSectionContainer extends StatelessWidget {
                 crossAxisAlignment:
                     CrossAxisAlignment.start, // Align text & button left
               )
-              .paddingRight(60.w)
-              .paddingTop(20.h),
+              .paddingRight(70.w)
+              .paddingTop(30.h),
         ),
       ],
     );

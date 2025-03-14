@@ -7,6 +7,8 @@ export 'package:flutter/material.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 export 'package:quran_quest/core/extension/extension.dart';
+// Navigation Controller
+export 'package:quran_quest/core/navigation/navigation.dart';
 export 'package:quran_quest/core/utils/utils.dart';
 export 'package:quran_quest/feature/Quran_Quest_DashBoard/presentation/view/quran_dashboard.dart';
 // Quran Main Screen

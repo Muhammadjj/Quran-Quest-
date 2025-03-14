@@ -1,17 +1,17 @@
 part of 'utils.dart';
 
-final ThemeData quranTheme = ThemeData(
+final ThemeData quranMajidTheme = ThemeData(
   useMaterial3: true,
   brightness: Brightness.light,
-  primaryColor: AppColors.primaryGreen,
+  primaryColor: Colors.green.shade700,
   colorScheme: _getQuranColorScheme(),
   textTheme: _getQuranTextTheme(),
   visualDensity: VisualDensity.adaptivePlatformDensity,
-  scaffoldBackgroundColor: AppColors.background,
-  dividerTheme: const DividerThemeData(
+  scaffoldBackgroundColor: Colors.green.shade50,
+  dividerTheme: DividerThemeData(
     thickness: 1,
     space: 1,
-    color: AppColors.divider,
+    color: Colors.grey.shade300,
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
@@ -27,64 +27,53 @@ final ThemeData quranTheme = ThemeData(
   ),
 );
 
-// ! Text Theme for Quran App
 TextTheme _getQuranTextTheme() {
   return TextTheme(
     displayLarge: TextStyle(
-      fontFamily: 'MeQuran',
-      color: AppColors.kWhite,
+      // fontFamily: 'AmiriQuran',
       fontSize: 40.sp,
+      color: Colors.black,
       overflow: TextOverflow.ellipsis,
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.w600,
     ),
     bodyMedium: TextStyle(
-      fontSize: 20.sp,
-      fontFamily: 'MeQuran', //* Quranic Font
-      fontWeight: FontWeight.w600,
-      height: 2,
-      color: AppColors.black,
+      fontSize: 16.sp,
+      // fontFamily: 'MeQuran',
+      color: Colors.black87,
+      fontWeight: FontWeight.w400,
     ),
     bodySmall: TextStyle(
-      fontFamily: 'AmiriQuran',
       fontSize: 14.sp,
-      color: AppColors.secondaryText,
+      // fontFamily: 'MeQuran',
+      color: Colors.black54,
       fontWeight: FontWeight.w400,
     ),
     headlineSmall: TextStyle(
-      fontFamily: 'AmiriQuran',
-      color: AppColors.primaryText,
+      // fontFamily: 'AmiriQuran',
       fontSize: 18.sp,
-      height: 1.2,
-      fontWeight: FontWeight.w600,
+      color: Colors.green.shade800,
+      fontWeight: FontWeight.w500,
     ),
     titleLarge: TextStyle(
-      fontFamily: 'AmiriQuran',
-      color: AppColors.primaryGreen,
+      // fontFamily: 'AmiriQuran',
       fontSize: 20.sp,
-      fontWeight: FontWeight.w600,
+      color: Colors.green.shade900,
+      fontWeight: FontWeight.w500,
     ),
     titleMedium: TextStyle(
-      fontFamily: 'Amiri',
-      fontSize: 16.sp,
-      color: AppColors.primaryText,
+      fontSize: 25.sp,
       fontWeight: FontWeight.w500,
-    ),
-    titleSmall: TextStyle(
-      fontFamily: 'Amiri',
-      fontSize: 14.sp,
-      color: AppColors.primaryText,
-      fontWeight: FontWeight.w500,
+      color: AppColors.kBlack,
     ),
   );
 }
 
-// ! Color Scheme for Quran App
 ColorScheme _getQuranColorScheme() {
-  return const ColorScheme.light(
-    brightness: Brightness.light,
-    primary: AppColors.primaryGreen,
-    onPrimary: AppColors.primaryText,
-    onError: AppColors.errorRed,
-    surface: AppColors.background,
+  return ColorScheme.light(
+    primary: Colors.green.shade700,
+    onPrimary: Colors.white,
+    surface: Colors.green.shade50,
+    onSurface: Colors.black,
+    onError: Colors.redAccent,
   );
 }

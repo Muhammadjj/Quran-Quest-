@@ -5,9 +5,11 @@ final dashBoardScreens = [
   const QuranMainScreen(),
   // 2
   BlocProvider<RandomAyahBloc>(
-    create: (context) => RandomAyahBloc(
-      getRandomAyah: getIt(),
-    ),
+    // create: (context) => RandomAyahBloc(
+    //   getRandomAyah: DependenceManager.sl(),
+    // ),
+
+    create: (context) => DependenceManager.sl<RandomAyahBloc>(),
     child: const DashBoardScreen(),
   ),
   // 3

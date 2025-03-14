@@ -24,14 +24,11 @@ class QuranMainScreenAppBarWidget extends StatelessWidget {
               elevation: 0,
               scrolledUnderElevation: 0,
               backgroundColor: Colors.transparent,
-              title: const AutoSizeText(
+              title: AutoSizeText(
                 'Quran',
-                style: TextStyle(
-                  fontFamily: 'MeQuran',
-                  fontSize: 28,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black,
-                ),
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontFamily: 'AmiriQuran',
+                    ),
               ),
               centerTitle: true,
               leading: IconButton(

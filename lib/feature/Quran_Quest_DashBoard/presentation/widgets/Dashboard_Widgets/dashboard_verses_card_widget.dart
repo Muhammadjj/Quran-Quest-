@@ -89,7 +89,11 @@ class QuranVerseCard extends StatelessWidget {
     return AutoSizeText(
       randomAyah.text ?? 'فَإِنَّ مَعَ الْعُسْرِ يُسْرًا',
       textAlign: TextAlign.center,
-      style: Theme.of(context).textTheme.bodyMedium,
+      style: TextStyle(
+        fontFamily: 'MeQuran',
+        fontSize: 25.sp,
+        fontWeight: FontWeight.bold,
+      ),
     );
   }
 }

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:quran_quest/export/export.dart';
 import 'package:quran_quest/feature/Quran_Quest_DashBoard/presentation/widgets/widgets.dart';
 import 'package:quran_quest/feature/Quran_Screen/Quran/presentation/widget/widget.dart';
@@ -63,7 +61,8 @@ class _QuranMainScreenState extends State<QuranMainScreen> {
   void handleDashBoardScreenTap(int index, BuildContext context) {
     if (index == 0) {
       _onButtonPressed();
-      log('message');
+      //! Navigate to Quran Tabs Screen
+      NavigationHelper.pushNamed(RoutesName.quranMajidMultipleTabs);
     } else {
       return _onButtonPressed();
     }

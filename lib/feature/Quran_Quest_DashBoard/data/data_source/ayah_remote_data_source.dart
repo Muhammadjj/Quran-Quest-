@@ -14,8 +14,8 @@ class AyahRemoteDataSourceImpl implements AyahRemoteDataSource {
   @override
   Future<RandomAyah> getRandomAyah() async {
     try {
-      final response =
-          await NetworkHelper.instance.get(endPoint: EndPoints.randomAyah);
+      final networkHelper = NetworkHelper(baseUrl: QURAN_HUB_BASEURL);
+      final response = await networkHelper.get(endPoint: EndPoints.randomAyah);
       return RandomAyah.fromJson(response.data as Map<String, dynamic>);
     } on Exception catch (error) {
       return Future.error(ErrorHandler.handle(error).failure!);

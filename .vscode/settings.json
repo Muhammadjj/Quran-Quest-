@@ -1,7 +1,8 @@
 {
     "java.compile.nullAnalysis.mode": "automatic",
     "cSpell.words": [
-        "namaz"
+        "namaz",
+        "Yaseen"
     ],
     "java.configuration.updateBuildConfiguration": "interactive"
 }

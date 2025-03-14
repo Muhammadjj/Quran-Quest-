@@ -59,6 +59,7 @@ class QuranAllahNameCard extends StatelessWidget {
                           color: AppColors.kWhite,
                           fontSize: 25.sp,
                           fontWeight: FontWeight.bold,
+                          fontFamily: 'MeQuran',
                         ),
                   ),
                 ),
@@ -88,7 +89,7 @@ class QuranAllahNameCard extends StatelessWidget {
                   overflow: TextOverflow.fade,
                   softWrap: true,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        fontSize: 20.sp,
+                        fontSize: 15.sp,
                         color: AppColors.kWhite,
                         fontWeight: FontWeight.w500,
                       ),
