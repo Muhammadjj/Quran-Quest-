@@ -9,14 +9,14 @@ abstract class SurahRemoteDataSource {
 }
 
 // Hit all surah list.
-class SurahRemoteDataSourceImpl extends SurahRemoteDataSource {
+class SurahRemoteDataSourceImpl implements SurahRemoteDataSource {
   @override
   Future<QuranSurahResponseModel> getAllSurahList() async {
     try {
       final alQuranBaseUrl = NetworkHelper(baseUrl: AL_QURAN_BASEURL);
 
       final getSurahList =
-          await alQuranBaseUrl.get(endPoint: EndPoints.getSurah);
+          await alQuranBaseUrl.get(endPoint: EndPoints.getSurahList);
 
       return QuranSurahResponseModel.fromJson(
         getSurahList.data as Map<String, dynamic>,

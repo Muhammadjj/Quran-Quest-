@@ -185,7 +185,7 @@ class GridItemUiDesign extends StatelessWidget {
               Text(
                 title,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: AppColors.white,
+                      color: AppColors.kWhite,
                       fontWeight: FontWeight.bold,
                       fontSize: 20.sp,
                     ),

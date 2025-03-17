@@ -223,13 +223,9 @@ QuranSurahModel _$QuranSurahModelFromJson(Map<String, dynamic> json) {
 mixin _$QuranSurahModel {
   int get number => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  @JsonKey(name: 'englishName')
   String get englishName => throw _privateConstructorUsedError;
-  @JsonKey(name: 'englishNameTranslation')
   String get englishNameTranslation => throw _privateConstructorUsedError;
-  @JsonKey(name: 'revelationType')
   String get revelationType => throw _privateConstructorUsedError;
-  @JsonKey(name: 'numberOfAyahs')
   int get numberOfAyahs => throw _privateConstructorUsedError;
 
   /// Serializes this QuranSurahModel to a JSON map.
@@ -251,10 +247,10 @@ abstract class $QuranSurahModelCopyWith<$Res> {
   $Res call(
       {int number,
       String name,
-      @JsonKey(name: 'englishName') String englishName,
-      @JsonKey(name: 'englishNameTranslation') String englishNameTranslation,
-      @JsonKey(name: 'revelationType') String revelationType,
-      @JsonKey(name: 'numberOfAyahs') int numberOfAyahs});
+      String englishName,
+      String englishNameTranslation,
+      String revelationType,
+      int numberOfAyahs});
 }
 
 /// @nodoc
@@ -319,10 +315,10 @@ abstract class _$$QuranSurahModelImplCopyWith<$Res>
   $Res call(
       {int number,
       String name,
-      @JsonKey(name: 'englishName') String englishName,
-      @JsonKey(name: 'englishNameTranslation') String englishNameTranslation,
-      @JsonKey(name: 'revelationType') String revelationType,
-      @JsonKey(name: 'numberOfAyahs') int numberOfAyahs});
+      String englishName,
+      String englishNameTranslation,
+      String revelationType,
+      int numberOfAyahs});
 }
 
 /// @nodoc
@@ -380,11 +376,10 @@ class _$QuranSurahModelImpl implements _QuranSurahModel {
   _$QuranSurahModelImpl(
       {required this.number,
       required this.name,
-      @JsonKey(name: 'englishName') required this.englishName,
-      @JsonKey(name: 'englishNameTranslation')
+      required this.englishName,
       required this.englishNameTranslation,
-      @JsonKey(name: 'revelationType') required this.revelationType,
-      @JsonKey(name: 'numberOfAyahs') required this.numberOfAyahs});
+      required this.revelationType,
+      required this.numberOfAyahs});
 
   factory _$QuranSurahModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$QuranSurahModelImplFromJson(json);
@@ -394,16 +389,12 @@ class _$QuranSurahModelImpl implements _QuranSurahModel {
   @override
   final String name;
   @override
-  @JsonKey(name: 'englishName')
   final String englishName;
   @override
-  @JsonKey(name: 'englishNameTranslation')
   final String englishNameTranslation;
   @override
-  @JsonKey(name: 'revelationType')
   final String revelationType;
   @override
-  @JsonKey(name: 'numberOfAyahs')
   final int numberOfAyahs;
 
   @override
@@ -452,14 +443,12 @@ class _$QuranSurahModelImpl implements _QuranSurahModel {
 
 abstract class _QuranSurahModel implements QuranSurahModel {
   factory _QuranSurahModel(
-          {required final int number,
-          required final String name,
-          @JsonKey(name: 'englishName') required final String englishName,
-          @JsonKey(name: 'englishNameTranslation')
-          required final String englishNameTranslation,
-          @JsonKey(name: 'revelationType') required final String revelationType,
-          @JsonKey(name: 'numberOfAyahs') required final int numberOfAyahs}) =
-      _$QuranSurahModelImpl;
+      {required final int number,
+      required final String name,
+      required final String englishName,
+      required final String englishNameTranslation,
+      required final String revelationType,
+      required final int numberOfAyahs}) = _$QuranSurahModelImpl;
 
   factory _QuranSurahModel.fromJson(Map<String, dynamic> json) =
       _$QuranSurahModelImpl.fromJson;
@@ -469,16 +458,12 @@ abstract class _QuranSurahModel implements QuranSurahModel {
   @override
   String get name;
   @override
-  @JsonKey(name: 'englishName')
   String get englishName;
   @override
-  @JsonKey(name: 'englishNameTranslation')
   String get englishNameTranslation;
   @override
-  @JsonKey(name: 'revelationType')
   String get revelationType;
   @override
-  @JsonKey(name: 'numberOfAyahs')
   int get numberOfAyahs;
 
   /// Create a copy of QuranSurahModel

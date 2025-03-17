@@ -6,6 +6,7 @@ class DependenceManager {
   static Future<void> init() async {
     await _dashBoardRandomAyahRegisterServices();
     await _quranAllTabsRegisterServices();
+    await _quranSurahDetailRegisterServices();
   }
 
   //  ! DashBoard Random Ayah Register.
@@ -24,13 +25,34 @@ class DependenceManager {
   // ! Quran All Tabs Register Classes.
   static Future<void> _quranAllTabsRegisterServices() async {
     sl
+      ..registerLazySingleton<SurahRemoteDataSourceImpl>(
+        SurahRemoteDataSourceImpl.new,
+      )
       ..registerFactory(() => QuranAllTabsDataBloc(getSurahUseCasesData: sl()))
       ..registerLazySingleton<QuranSurahRepo>(
         () => SurahRepositoryImpl(remoteDataSourceImpl: sl()),
       )
-      ..registerLazySingleton(() => GetQuranSurahList(surahRepo: sl()))
-      ..registerLazySingleton<SurahRemoteDataSourceImpl>(
-        SurahRemoteDataSourceImpl.new,
+      ..registerLazySingleton(() => GetQuranSurahListUseCase(surahRepo: sl()));
+  }
+
+  // ! Quran Surah Detail Register Classes
+  static Future<void> _quranSurahDetailRegisterServices() async {
+    sl
+      // 1. Register Remote Data Source (lowest layer)
+      ..registerLazySingleton<QuranSurahDetailRemoteDataSource>(
+        QuranSurahDetailImpl.new,
+      )
+      // 2. Register Repository
+      ..registerLazySingleton<QuranSurahDetailRepo>(
+        () => QuranSurahDetailRepositoryImpl(quranSurahDetailImpl: sl()),
+      )
+      // 3. Register UseCase
+      ..registerLazySingleton(
+        () => QuranSurahDetailUsecases(quranSurahDetailRepo: sl()),
+      )
+      // 4. Register Bloc (highest layer)
+      ..registerFactory(
+        () => QuranSurahDetailBloc(quranSurahDetailUsecases: sl()),
       );
   }
 

@@ -65,6 +65,11 @@ TextTheme _getQuranTextTheme() {
       fontWeight: FontWeight.w500,
       color: AppColors.kBlack,
     ),
+    labelSmall: TextStyle(
+      fontSize: 15.sp,
+      fontWeight: FontWeight.w300,
+      color: AppColors.kBlack,
+    ),
   );
 }
 

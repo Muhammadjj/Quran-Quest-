@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:quran_quest/export/export.dart';
 
 part 'quran_tabs_main_screen/quran_tabs_widget.dart';

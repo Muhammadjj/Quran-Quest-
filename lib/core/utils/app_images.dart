@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 part of 'utils.dart';
 
 class AppImages {
@@ -16,6 +18,8 @@ class AppImages {
   static const String cuteBoyReadQuran = '$_imagePath/cute_boy_quran_read.png';
   static const String quranGridShade = '$_imagePath/quran_grid_shade.png';
   static const String quranGridStar = '$_imagePath/quran_grid_star.png';
+  static const String allahHome = '$_imagePath/allah_home.png';
+  static const String m_Madina = '$_imagePath/M_madina.png';
 
   static const String shadowMosque = '$_imagePath/shadow_mosque.png';
 

@@ -24,11 +24,11 @@ class QuranAllTabsDataBloc
     try {
       emit(QuranLoadingSurah());
       final response = await getSurahUseCasesData.surahRepo.getAllListOfSurah();
-      log('Response Data From Surah :\n $response');
+      // log('Response Data From Surah :\n $response');
       response.fold(
         (Failure failure) => emit(QuranSurahErrorMessage(failure: failure)),
         (QuranSurahResponseModel surahModel) {
-          log('aw JSON Response: ${surahModel.toJson()}');
+          // log('aw JSON Response: ${surahModel.toJson()}');
           emit(QuranLoadedSurah(surahModel: surahModel));
         },
       );
@@ -42,5 +42,5 @@ class QuranAllTabsDataBloc
   }
 
   // Surah UseCases.
-  final GetQuranSurahList getSurahUseCasesData;
+  final GetQuranSurahListUseCase getSurahUseCasesData;
 }

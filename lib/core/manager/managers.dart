@@ -9,5 +9,10 @@ import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/data/repo/quran_surah
 import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/domain/repo/quran_surah_repo.dart';
 import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/domain/usecases/quran_surah_usecases.dart';
 import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/presentation/bloc/quran_all_tabs_data_bloc.dart';
+import 'package:quran_quest/feature/Quran_Screen/Surah_Detail_Screen/data/data_source/quran_surah_detail_remote_data_source.dart';
+import 'package:quran_quest/feature/Quran_Screen/Surah_Detail_Screen/data/repo/quran_surah_detail_repository_impl.dart';
+import 'package:quran_quest/feature/Quran_Screen/Surah_Detail_Screen/domain/repo/quran_surah_detail_repo.dart';
+import 'package:quran_quest/feature/Quran_Screen/Surah_Detail_Screen/domain/usecases/quran_surah_detail_usecases.dart';
+import 'package:quran_quest/feature/Quran_Screen/Surah_Detail_Screen/presentation/bloc/quran_surah_detail_bloc.dart';
 
 part 'dependency_manager.dart';

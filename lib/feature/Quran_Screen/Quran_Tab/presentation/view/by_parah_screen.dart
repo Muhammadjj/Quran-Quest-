@@ -21,15 +21,15 @@ class _ByParahScreenState extends State<ByParahScreen> {
             contentPadding: const EdgeInsets.all(15),
             title: Text(
               parah,
-              style: const TextStyle(
-                color: AppColors.white,
+              style: TextStyle(
+                color: AppColors.kWhite,
                 fontSize: 25,
                 fontFamily: 'MeQuran',
               ),
             ),
             subtitle: Text(
               '${index + 1}',
-              style: const TextStyle(color: AppColors.white),
+              style: TextStyle(color: AppColors.kWhite),
             ),
           );
         },
