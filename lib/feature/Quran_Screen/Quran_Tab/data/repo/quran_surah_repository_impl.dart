@@ -4,7 +4,7 @@ import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/data/data_source/sura
 import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/data/model/surah_model/quran_surah_model.dart';
 import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/domain/repo/quran_surah_repo.dart';
 
-class SurahRepositoryImpl extends QuranSurahRepo {
+class SurahRepositoryImpl implements QuranSurahRepo {
   SurahRepositoryImpl({required this.remoteDataSourceImpl});
   final SurahRemoteDataSourceImpl remoteDataSourceImpl;
   @override

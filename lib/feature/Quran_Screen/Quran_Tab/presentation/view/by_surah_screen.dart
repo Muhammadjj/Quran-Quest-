@@ -40,10 +40,19 @@ class _BySurahScreenState extends State<BySurahScreen> {
                     return SurahCardWidget(
                       numberOfSurah: surahData.number,
                       surahNameArabic: surahData.name,
-                      surahNameEnglish: surahData.englishNameTranslation,
+                      surahNameEnglish: surahData.englishName,
                       verseCount: surahData.numberOfAyahs,
                       height: height,
                       width: width,
+                      onTap: () {
+                        NavigationHelper.pushNamed(
+                          RoutesName.quranSurahDetail,
+                          arguments: {
+                            'surahIndex': surahData.number,
+                            'surahNameArabic': surahData.name,
+                          },
+                        );
+                      },
                     );
                   },
                 );

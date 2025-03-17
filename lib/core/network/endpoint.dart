@@ -11,5 +11,8 @@ abstract class EndPoints {
   static const String randomAyah = '/ayah/random';
 
   //! AL_QURAN ENDPOINTS
-  static const String getSurah = '/surah';
+  static const String getSurahList = '/surah';
+  static String detailSurah({required int surahIndex}) {
+    return '/surah/$surahIndex/ar.alafasy';
+  }
 }

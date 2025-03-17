@@ -7,6 +7,7 @@ import 'package:quran_quest/feature/Quran_Quest_DashBoard/presentation/widgets/w
 import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/presentation/bloc/quran_all_tabs_data_bloc.dart';
 import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/presentation/view/by_surah_screen.dart';
 import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/presentation/view/quran_tabs_main_screen.dart';
+import 'package:quran_quest/feature/Quran_Screen/Surah_Detail_Screen/presentation/view/surah_detail_screen.dart';
 
 part 'route_name.dart';
 part 'navigation_helper.dart';

@@ -4,8 +4,9 @@ import 'package:quran_quest/core/usecases/usecases.dart';
 import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/data/model/surah_model/quran_surah_model.dart';
 import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/domain/repo/quran_surah_repo.dart';
 
-class GetQuranSurahList extends UseCaseWithOutParams<QuranSurahResponseModel> {
-  GetQuranSurahList({required this.surahRepo});
+class GetQuranSurahListUseCase
+    extends UseCaseWithOutParams<QuranSurahResponseModel> {
+  GetQuranSurahListUseCase({required this.surahRepo});
   final QuranSurahRepo surahRepo;
   @override
   Future<Either<Failure, QuranSurahResponseModel>> call() {

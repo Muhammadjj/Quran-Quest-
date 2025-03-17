@@ -52,7 +52,7 @@ class QuranVerseCard extends StatelessWidget {
           style: TextStyle(
             fontSize: 14.sp,
             fontWeight: FontWeight.bold,
-            color: AppColors.black,
+            color: AppColors.kBlack,
           ),
         ),
         AutoSizeText(
@@ -60,7 +60,7 @@ class QuranVerseCard extends StatelessWidget {
           style: TextStyle(
             fontSize: 14.sp,
             fontWeight: FontWeight.bold,
-            color: AppColors.black,
+            color: AppColors.kBlack,
           ),
         ),
         AutoSizeText(
@@ -68,7 +68,7 @@ class QuranVerseCard extends StatelessWidget {
           style: TextStyle(
             fontSize: 14.sp,
             fontWeight: FontWeight.bold,
-            color: AppColors.black,
+            color: AppColors.kBlack,
           ),
         ),
       ].addColumn(

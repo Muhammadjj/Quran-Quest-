@@ -24,6 +24,15 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return CustomPageRoute(
         page: const BySurahScreen(),
       );
+    //! 6
+    case RoutesName.quranSurahDetail:
+      final args = settings.arguments! as Map<String, dynamic>;
+      return CustomPageRoute(
+        page: QuranSurahDetailScreen(
+          surahIndex: args['surahIndex'] as int,
+          nameOfSurah: args['surahNameArabic'] as String,
+        ),
+      );
     default:
       return MaterialPageRoute(
         builder: (_) => const Scaffold(

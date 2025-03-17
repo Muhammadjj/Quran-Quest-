@@ -1,7 +1,7 @@
 part of 'utils.dart';
 
 class AppColors {
-  // Quran App Primary Theme Colors
+  //! Quran App Primary Theme Colors
   static const Color primary = Color(0xFFEE2BE7F);
   static const Color secondary = Color(0xFF6B7280);
   // **Day Mode Colors**
@@ -21,18 +21,13 @@ class AppColors {
   static const Color deepGreen =
       Color.fromARGB(255, 57, 127, 92); //* Deep Green
   static const Color emeraldGreen = Color(0xFF026E52);
+  static Color? kGreen700 = Colors.green[700];
   static const Color darkGold = Color(0xFFB8860B);
 
   // **Common Colors**
-  static const Color white = Colors.white;
-  static const Color black = Colors.black;
   static const Color grey = Color(0xFFB0B0B0);
   static const Color darkGrey = Color(0xFF424242);
   static const Color lightGrey = Color(0xFFE0E0E0);
-
-  // **Blue Shades**
-  static const Color blue = Color(0xFF007AFF);
-  static const Color navyBlue = Color(0xFF001F3F);
 
   // **Red & Error Colors**
   static const Color red = Color(0xFFD32F2F);
@@ -56,6 +51,8 @@ class AppColors {
   // ! Blue Shades Colors .
   static Color kBlue = Colors.blue;
   static Color kButtonColor = const Color.fromARGB(255, 51, 160, 255);
+
+  static const Color navyBlue = Color(0xFF001F3F);
   // Blue grey shade
   static Color kBlueGray50 = const Color(0XFFE9ECEF);
   static Color kDimGray = const Color.fromARGB(255, 66, 66, 66);
@@ -77,4 +74,5 @@ class AppColors {
   static const Color divider = Color(0xFFE0E0E0);
   static const Color primaryText = Color(0xFF333333);
   static const Color secondaryText = Color(0xFF666666);
+  static const Color quranTextColor = Color.fromARGB(255, 73, 153, 94);
 }

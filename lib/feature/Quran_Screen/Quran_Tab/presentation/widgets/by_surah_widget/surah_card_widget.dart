@@ -8,6 +8,7 @@ class SurahCardWidget extends StatelessWidget {
     required this.verseCount,
     required this.height,
     required this.width,
+    required this.onTap,
     super.key,
   });
 
@@ -17,27 +18,30 @@ class SurahCardWidget extends StatelessWidget {
   final int verseCount;
   final double height;
   final double width;
-
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height * 0.15,
-      padding: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.r),
-        color: AppColors.kDimGray,
-      ),
-      child: <Widget>[
-        _buildSurahNumber(),
-        _buildSurahNameArabic(context),
-        SizedBox(width: width * 0.08),
-        _buildSurahDetails(),
-        const Spacer(),
-        _buildFavoriteIcon(),
-      ].addRow(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      ),
-    ).paddingTop(5).paddingHorizontal(10);
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: height * 0.15,
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.r),
+          color: AppColors.kDimGray,
+        ),
+        child: <Widget>[
+          _buildSurahNumber(),
+          _buildSurahNameArabic(context),
+          SizedBox(width: width * 0.08),
+          _buildSurahDetails(context: context),
+          const Spacer(),
+          _buildFavoriteIcon(),
+        ].addRow(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        ),
+      ).paddingTop(10.h).paddingHorizontal(10.w),
+    );
   }
 
   Widget _buildSurahNumber() {
@@ -45,9 +49,11 @@ class SurahCardWidget extends StatelessWidget {
       flex: 1,
       child: AutoSizeText(
         numberOfSurah.toString(),
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 20,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: TextStyle(
+          color: AppColors.kWhite,
+          fontSize: 15.sp,
         ),
       ),
     );
@@ -67,7 +73,8 @@ class SurahCardWidget extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                   fontSize: 30.sp,
                   fontFamily: 'MeQuran',
-                  color: Colors.green,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.quranTextColor,
                 ),
           ),
         ),
@@ -75,24 +82,28 @@ class SurahCardWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildSurahDetails() {
+  Widget _buildSurahDetails({required BuildContext context}) {
     return Expanded(
       flex: 4,
       child: <Widget>[
         AutoSizeText(
           surahNameEnglish,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 15,
-          ),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: Theme.of(context)
+              .textTheme
+              .bodyMedium
+              ?.copyWith(color: AppColors.kWhite, fontSize: 15.sp),
         ),
         const SizedBox(height: 5),
         AutoSizeText(
           'Verses: $verseCount',
-          style: TextStyle(
-            color: AppColors.kGrey,
-            fontSize: 14,
-          ),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: Theme.of(context)
+              .textTheme
+              .bodyMedium
+              ?.copyWith(color: AppColors.kWhite, fontSize: 15.sp),
         ),
       ].addColumn(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -102,6 +113,6 @@ class SurahCardWidget extends StatelessWidget {
   }
 
   Widget _buildFavoriteIcon() {
-    return Icons.favorite_border.toCustomIcon(color: AppColors.white);
+    return Icons.favorite_border.toCustomIcon(color: AppColors.kWhite);
   }
 }

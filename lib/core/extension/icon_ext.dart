@@ -2,7 +2,7 @@ part of 'extension.dart';
 
 extension CustomIcon on IconData {
   Widget toCustomIcon({
-    Color color = AppColors.black,
+    Color color = const Color(0xFF000000),
     double? size,
     Key? key,
     bool applyTextScaling = false,
