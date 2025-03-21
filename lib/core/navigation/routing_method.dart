@@ -33,6 +33,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
           nameOfSurah: args['surahNameArabic'] as String,
         ),
       );
+    //! 7
+    case RoutesName.quranSettings:
+      return CustomPageRoute(page: const QuranSettingScreen());
     default:
       return MaterialPageRoute(
         builder: (_) => const Scaffold(

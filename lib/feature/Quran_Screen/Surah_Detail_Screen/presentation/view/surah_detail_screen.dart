@@ -31,7 +31,7 @@ class _QuranSurahDetailScreenState extends State<QuranSurahDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.kBlack,
+      backgroundColor: AppColors.kCharcoalGray,
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {
@@ -39,7 +39,7 @@ class _QuranSurahDetailScreenState extends State<QuranSurahDetailScreen> {
             final width = constraints.maxWidth;
             return CustomScrollView(
               slivers: [
-                SliverAppBarSurahDetailWidget(widget: widget),
+                SliverAppBarSurahDetailWidget(widget: widget, width: width),
                 SurahDetailContent(height: height, width: width),
               ],
             );
@@ -74,6 +74,7 @@ class SurahDetailContent extends StatelessWidget {
           log('Loaded State: ${state.detailModel}');
           return SliverList(
             delegate: SliverChildBuilderDelegate(
+              childCount: state.detailModel.data.ayahs.length,
               (context, index) {
                 if (index == 0) {
                   return SurahDetailHeader(
@@ -83,18 +84,27 @@ class SurahDetailContent extends StatelessWidget {
                   );
                 } else {
                   final ayahIndex = index - 1;
-                  if (ayahIndex < state.detailModel.data.ayahs.length) {
-                    return Container(
-                      height: height * 0.2,
-                      width: width * 0.8,
-                      color: AppColors.grey,
-                    ).paddingAll(8);
+                  if (ayahIndex >= 0 &&
+                      ayahIndex < state.detailModel.data.ayahs.length) {
+                    return SurahDetailCardWidget(
+                      number: state.detailModel.data.ayahs[ayahIndex].number
+                          .toString(),
+                      textOfArabic:
+                          state.detailModel.data.ayahs[ayahIndex].text,
+                      juz: state.detailModel.data.ayahs[ayahIndex].juz
+                          .toString(),
+                      manzil: state.detailModel.data.ayahs[ayahIndex].manzil
+                          .toString(),
+                      ruku: state.detailModel.data.ayahs[ayahIndex].ruku
+                          .toString(),
+                      height: height,
+                      width: width,
+                    );
                   } else {
                     return const SizedBox.shrink();
                   }
                 }
               },
-              childCount: state.detailModel.data.ayahs.length + 1,
             ),
           );
         } else if (state is QuranSurahDetailErrorMessage) {
