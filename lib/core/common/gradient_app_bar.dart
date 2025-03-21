@@ -13,6 +13,10 @@ class GradientAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      leading: GestureDetector(
+        onTap: NavigationHelper.goBack,
+        child: Iconsax.arrow_left.toCustomIcon(),
+      ),
       title: AutoSizeText(
         title,
         style: Theme.of(context).textTheme.titleMedium?.copyWith(

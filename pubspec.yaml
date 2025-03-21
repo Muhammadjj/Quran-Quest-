@@ -45,10 +45,10 @@ dependencies:
 # !This is a Flutter package for a Tinder-like card swiper.✨
   flutter_card_swiper: ^7.0.2
 # ! Added dependencies: freezed_annotation for immutable models and json_annotation for JSON serialization.
-  freezed_annotation: ^2.4.1
+  freezed_annotation: ^3.0.0
   json_annotation: ^4.9.0
   flutter_staggered_grid_view: ^0.7.0
-  
+  popover: 
   
   
  
@@ -61,7 +61,7 @@ dev_dependencies:
 
   build_runner: ^2.4.15
 #! Added freezed for immutable data classes and json_serializable for JSON serialization.
-  freezed: ^2.4.1
+  freezed: ^3.0.0-0.0.dev
   json_serializable: 6.9.0
   
   very_good_analysis: ^7.0.0
@@ -94,6 +94,10 @@ flutter:
     - family: MeQuran
       fonts:
         - asset: assets/fonts/me_quran Regular.ttf
+    - family: NotoNastaliqUrdu
+      fonts:
+        - asset: assets/fonts/NotoNastaliqUrdu-VariableFont_wght.ttf
+
 
   #
   # For details regarding fonts from package dependencies,

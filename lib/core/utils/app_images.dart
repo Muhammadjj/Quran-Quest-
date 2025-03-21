@@ -4,7 +4,7 @@ part of 'utils.dart';
 
 class AppImages {
   //! Path
-  static const String _quranIconPath = 'assets/quran_icon';
+  // static const String _quranIconPath = 'assets/quran_icon';
   static const String _svgImagePath = 'assets/svg_images';
   static const String _imagePath = 'assets/images';
   // static const String _imagePath = 'assets/images';
@@ -20,6 +20,7 @@ class AppImages {
   static const String quranGridStar = '$_imagePath/quran_grid_star.png';
   static const String allahHome = '$_imagePath/allah_home.png';
   static const String m_Madina = '$_imagePath/M_madina.png';
+  static const String bgRemoveMosque = '$_imagePath/bg_remove_mosque.png';
 
   static const String shadowMosque = '$_imagePath/shadow_mosque.png';
 

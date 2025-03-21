@@ -44,7 +44,7 @@ class AppTypography {
         fontFamily: 'VarelaRound',
       );
 
-      static TextStyle bold18({Color? color}) => TextStyle(
+  static TextStyle bold18({Color? color}) => TextStyle(
         fontSize: 18.sp,
         fontWeight: _bold,
         color: color,
@@ -64,4 +64,10 @@ class AppTypography {
   //! 12
   static TextStyle medium12({Color? color}) =>
       TextStyle(fontSize: 12.sp, fontWeight: _w400, color: color);
+}
+
+class FontFamilyName {
+  static const String amiriQuran = 'AmiriQuran';
+  static const String meQuran = 'MeQuran';
+  static const String notoNastaliqUrdu = 'NotoNastaliqUrdu';
 }
