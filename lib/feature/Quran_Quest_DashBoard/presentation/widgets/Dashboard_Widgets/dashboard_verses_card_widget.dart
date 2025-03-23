@@ -22,7 +22,7 @@ class QuranVerseCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildHeader(),
+          _buildHeader(context: context),
           SizedBox(height: 18.h),
           <Widget>[
             Flexible(child: _buildArabicVerse(context: context)),
@@ -44,32 +44,34 @@ class QuranVerseCard extends StatelessWidget {
   }
 
   //! Method to build Header
-  Row _buildHeader() {
+  Row _buildHeader({required BuildContext context}) {
     return <Widget>[
       <Widget>[
         AutoSizeText(
           'Verses',
-          style: TextStyle(
-            fontSize: 14.sp,
-            fontWeight: FontWeight.bold,
-            color: AppColors.kBlack,
-          ),
+          style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                fontSize: 14.sp,
+                fontWeight: FontWeight.bold,
+                // color: AppColors.kBlack,
+              ),
         ),
         AutoSizeText(
           'Quran Quest',
-          style: TextStyle(
-            fontSize: 14.sp,
-            fontWeight: FontWeight.bold,
-            color: AppColors.kBlack,
-          ),
+          style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                fontSize: 14.sp,
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? AppColors.emeraldGreen
+                    : AppColors.kBlack,
+              ),
         ),
         AutoSizeText(
           '${randomAyah.surah?.englishName ?? 'Surah Al-Inshirah'} \t\t[${randomAyah.juz ?? 30} : ${randomAyah.manzil ?? 7}]',
-          style: TextStyle(
-            fontSize: 14.sp,
-            fontWeight: FontWeight.bold,
-            color: AppColors.kBlack,
-          ),
+          style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                fontSize: 14.sp,
+                fontWeight: FontWeight.bold,
+                // color: AppColors.kBlack,
+              ),
         ),
       ].addColumn(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,7 +79,11 @@ class QuranVerseCard extends StatelessWidget {
       // ! Icon Buttons
       IconButton(
         onPressed: () {},
-        icon: Icons.share.toCustomIcon(),
+        icon: Icons.share.toCustomIcon(
+          color: Theme.of(context).brightness == Brightness.dark
+              ? AppColors.kWhite
+              : AppColors.kBlack,
+        ),
       ),
     ].addRow(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -89,11 +95,14 @@ class QuranVerseCard extends StatelessWidget {
     return AutoSizeText(
       randomAyah.text ?? 'فَإِنَّ مَعَ الْعُسْرِ يُسْرًا',
       textAlign: TextAlign.center,
-      style: TextStyle(
-        fontFamily: 'MeQuran',
-        fontSize: 25.sp,
-        fontWeight: FontWeight.bold,
-      ),
+      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+            fontFamily: FontFamilyName.meQuran,
+            fontSize: 25.sp,
+            fontWeight: FontWeight.bold,
+          ),
+
+      //  TextStyle(
+      // ),
     );
   }
 }

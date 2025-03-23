@@ -16,11 +16,11 @@ class CustomMasonryGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     return MasonryGridView.builder(
       shrinkWrap: true,
-      padding: const EdgeInsets.only(
-        left: 5,
-        right: 5,
-        top: 5,
-        bottom: 130,
+      padding: EdgeInsets.only(
+        left: 5.w,
+        right: 5.w,
+        top: 5.h,
+        bottom: 10.h,
       ),
       mainAxisSpacing: 8,
       crossAxisSpacing: 8,
@@ -38,7 +38,7 @@ class CustomMasonryGridView extends StatelessWidget {
           width: context.width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.r),
-            color: AppColors.kDimGray,
+            color: Theme.of(context).colorScheme.surface,
             boxShadow: [
               BoxShadow(
                 color: AppColors.kBlack.withOpacity(0.2),
@@ -86,14 +86,14 @@ class GridItemUiDesign extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _buildGridItem(
-      image: _getImagePath(index),
+      // image: _getImagePath(index, context),
       title: _getTitle(index),
       context: context,
     );
   }
 
   //! Method to get the image path based on the index
-  Widget _getImagePath(int index) {
+  Widget _getImagePath(int index, BuildContext context) {
     switch (index) {
       case 0:
       case 1:
@@ -103,7 +103,9 @@ class GridItemUiDesign extends StatelessWidget {
         return SvgPicture.asset(
           AppImages.quranIconSVG,
           colorFilter: ColorFilter.mode(
-            AppColors.kWhite,
+            Theme.of(context).brightness == Brightness.dark
+                ? AppColors.kWhite
+                : AppColors.kBlack,
             BlendMode.srcIn,
           ),
           height: 50,
@@ -123,17 +125,17 @@ class GridItemUiDesign extends StatelessWidget {
   String _getTitle(int index) {
     switch (index) {
       case 0:
-        return 'Al_Quran';
+        return 'القرآن';
       case 1:
-        return 'Surah Yaseen';
+        return 'سورة يس';
       case 2:
-        return 'Surah Rahman';
+        return 'سورة الرحمن';
       case 3:
-        return 'Surah Waqia';
+        return 'سورة الواقعة';
       case 4:
-        return 'Surah Kosar';
+        return 'سورة الكوثر';
       default:
-        return 'Surah Al_Nas';
+        return 'سورة الناس';
     }
   }
 
@@ -141,7 +143,7 @@ class GridItemUiDesign extends StatelessWidget {
     required BuildContext context,
     // required String imagePath,
     required String title,
-    required Widget image,
+    // required Widget image,
   }) {
     return Stack(
       children: [
@@ -153,7 +155,9 @@ class GridItemUiDesign extends StatelessWidget {
             borderRadius: BorderRadius.circular(14.r),
             child: ColorFiltered(
               colorFilter: ColorFilter.mode(
-                AppColors.kGrey.withOpacity(0.15),
+                Theme.of(context).brightness == Brightness.dark
+                    ? AppColors.kGrey.withOpacity(0.15)
+                    : AppColors.kGrey.withOpacity(0.3),
                 BlendMode.modulate,
               ),
               child: Image.asset(
@@ -178,17 +182,20 @@ class GridItemUiDesign extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(
-                child: image,
-              ),
-              SizedBox(height: 8.h),
-              Text(
-                title,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: AppColors.kWhite,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.sp,
-                    ),
+              Expanded(
+                flex: 9,
+                child: Center(
+                  child: Text(
+                    title,
+                    // maxLines: 1,
+                    overflow: TextOverflow.fade,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30.sp,
+                          fontFamily: FontFamilyName.notoNastaliqUrdu,
+                        ),
+                  ).paddingHorizontal(1),
+                ),
               ),
             ],
           ),

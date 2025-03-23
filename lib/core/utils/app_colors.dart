@@ -7,7 +7,7 @@ class AppColors {
   // **Day Mode Colors**
   static const Color dayPrimary = Color(0xffF8F8F8);
   static const Color dayBorderPrimary = Color(0xffe7e7e7);
-  static const Color dayText = Color(0xFF333333);
+  static const Color dayText = Colors.black;
   static const Color dayBackground = Color(0xFFFDFDFD);
 
   // **Night Mode Colors**

@@ -1,5 +1,11 @@
+// ignore_for_file: avoid_positional_boolean_parameters
+
+import 'dart:developer';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:quran_quest/export/export.dart';
+import 'package:quran_quest/feature/app/app_Bloc/cubit/quran_theme_cubit.dart';
 
 class QuranSettingScreen extends StatefulWidget {
   const QuranSettingScreen({super.key});
@@ -12,7 +18,7 @@ class _QuranSettingScreenState extends State<QuranSettingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.kCharcoalGray,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: GradientAppBar(title: 'Setting', context: context),
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -32,7 +38,21 @@ class _QuranSettingScreenState extends State<QuranSettingScreen> {
                 'Override System Dark Mode',
                 hasSwitch: true,
               ),
-              buildSettingItem(Iconsax.moon5, 'Dark Mode', hasSwitch: true),
+              buildSettingItem(
+                Iconsax.moon5,
+                'Dark Mode',
+                subtitle: context.watch<QuranThemeCubit>().state.themeMode ==
+                        ThemeMode.dark
+                    ? 'Enable'
+                    : 'Disable',
+                hasSwitch: true,
+                switchValue: context.watch<QuranThemeCubit>().state.themeMode ==
+                    ThemeMode.dark,
+                onSwitchChanged: (value) {
+                  log('$value');
+                  context.read<QuranThemeCubit>().toggleTheme();
+                },
+              ),
               buildSettingItem(
                 Iconsax.microphone,
                 'Default Language For Voice Commands',
@@ -72,12 +92,19 @@ class _QuranSettingScreenState extends State<QuranSettingScreen> {
     String title, {
     bool hasSwitch = false,
     String? subtitle,
+    bool switchValue = false,
+    void Function(bool)? onSwitchChanged,
   }) {
     return ListTile(
       leading: Icon(icon, color: Colors.grey[400], size: 28),
       title: Text(
         title,
-        style: const TextStyle(color: Colors.white, fontSize: 16),
+        style: Theme.of(context).textTheme.titleSmall?.copyWith(
+              fontSize: 16.sp,
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? AppColors.kWhite
+                  : AppColors.kBlack,
+            ),
       ),
       subtitle: subtitle != null
           ? Text(
@@ -86,11 +113,10 @@ class _QuranSettingScreenState extends State<QuranSettingScreen> {
             )
           : null,
       trailing: hasSwitch
-          ? Switch(
-              value: true,
-              padding: EdgeInsets.zero,
+          ? QuranSwitchButton(
+              value: switchValue,
+              onChanged: onSwitchChanged ?? (_) {},
               activeColor: Colors.green,
-              onChanged: (value) {},
             )
           : null,
     );

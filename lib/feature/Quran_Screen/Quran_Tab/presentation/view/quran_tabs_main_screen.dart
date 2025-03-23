@@ -27,7 +27,7 @@ class _QuranTabsScreenState extends State<QuranTabsScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.kCharcoalGray,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: GradientAppBar(
         title: 'Quran',
         context: context,

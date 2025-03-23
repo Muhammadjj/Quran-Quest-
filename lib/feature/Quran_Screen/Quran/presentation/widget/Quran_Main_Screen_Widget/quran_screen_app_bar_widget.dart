@@ -27,7 +27,8 @@ class QuranMainScreenAppBarWidget extends StatelessWidget {
               title: AutoSizeText(
                 'Quran',
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontFamily: 'AmiriQuran',
+                      fontFamily: FontFamilyName.amiriQuran,
+                      color: AppColors.kBlack,
                     ),
               ),
               centerTitle: true,

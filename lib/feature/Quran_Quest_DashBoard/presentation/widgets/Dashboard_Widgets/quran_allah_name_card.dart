@@ -21,7 +21,7 @@ class QuranAllahNameCard extends StatelessWidget {
         width: width * 0.94,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.r),
-          color: AppColors.kDimGray,
+          color: Theme.of(context).colorScheme.surface,
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.2),
@@ -55,8 +55,7 @@ class QuranAllahNameCard extends StatelessWidget {
                     quranAllahNameModel.name,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: AppColors.kWhite,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           fontSize: 25.sp,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'MeQuran',
@@ -77,9 +76,8 @@ class QuranAllahNameCard extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.visible,
                   softWrap: true,
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontSize: 16.sp,
-                        color: AppColors.kWhite,
                         fontWeight: FontWeight.w500,
                       ),
                 ),
@@ -88,9 +86,8 @@ class QuranAllahNameCard extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.fade,
                   softWrap: true,
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontSize: 15.sp,
-                        color: AppColors.kWhite,
                         fontWeight: FontWeight.w500,
                       ),
                 ),
@@ -98,9 +95,8 @@ class QuranAllahNameCard extends StatelessWidget {
                   quranAllahNameModel.number.toString(),
                   maxLines: 1,
                   overflow: TextOverflow.fade,
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontSize: 16.sp,
-                        color: AppColors.kWhite,
                         fontWeight: FontWeight.w500,
                       ),
                 ),

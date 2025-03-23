@@ -42,7 +42,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: AppColors.kCharcoalGray,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       drawer: const DashBoardDrawerWidget(),
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -83,7 +83,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               title: AutoSizeText(
                 'Home',
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontFamily: 'AmiriQuran',
+                      fontFamily: FontFamilyName.amiriQuran,
+                      color: AppColors.kBlack,
                     ),
               ),
               centerTitle: true,

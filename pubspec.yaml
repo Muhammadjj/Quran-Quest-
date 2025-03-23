@@ -45,10 +45,12 @@ dependencies:
 # !This is a Flutter package for a Tinder-like card swiper.✨
   flutter_card_swiper: ^7.0.2
 # ! Added dependencies: freezed_annotation for immutable models and json_annotation for JSON serialization.
-  freezed_annotation: ^3.0.0
+  freezed_annotation: ^2.4.1
   json_annotation: ^4.9.0
+# ! Using Different sizes of Grid View.
   flutter_staggered_grid_view: ^0.7.0
-  popover: 
+  shared_preferences: ^2.5.2
+  
   
   
  
@@ -57,13 +59,14 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^5.0.0 
   pretty_dio_logger: ^1.4.0
+#! Localization Generator.
   easy_localization_generator: ^0.3.3 
-
+#! Automatically Generate file like as Freezed, Hive etc...
   build_runner: ^2.4.15
 #! Added freezed for immutable data classes and json_serializable for JSON serialization.
-  freezed: ^3.0.0-0.0.dev
+  freezed: ^2.4.1
   json_serializable: 6.9.0
-  
+#! Using Better code 
   very_good_analysis: ^7.0.0
   
   
