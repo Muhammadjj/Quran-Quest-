@@ -20,7 +20,7 @@ class GradientAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: AutoSizeText(
         title,
         style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              color: AppColors.kBlack,
+              color: Theme.of(context).colorScheme.primary,
               fontWeight: FontWeight.bold,
               fontFamily: 'AmiriQuran',
             ),

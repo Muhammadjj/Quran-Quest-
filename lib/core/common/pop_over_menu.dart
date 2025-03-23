@@ -70,6 +70,9 @@ class PopoverMenuWidget<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textColor = Theme.of(context).brightness == Brightness.dark
+        ? AppColors.nightText
+        : AppColors.dayText;
     return GestureDetector(
       key: _key, // 🔹 Widget ki position track karega
       onTap: () => _showPopupMenu(context),
@@ -83,7 +86,7 @@ class PopoverMenuWidget<T> extends StatelessWidget {
                     fontSize: 20,
                     fontWeight: FontWeight.w500,
                     fontFamily: FontFamilyName.amiriQuran,
-                    color: AppColors.kWhite, // 🎨 Text color
+                    color: textColor, // 🎨 Text color
                   ),
 
               textAlign: TextAlign.end, // 🔚 Text alignment
@@ -92,7 +95,7 @@ class PopoverMenuWidget<T> extends StatelessWidget {
               height: context.height * 0.04,
               width: context.width * 0.1,
               child: Icons.arrow_drop_down.toCustomIcon(
-                color: AppColors.kWhite,
+                color: textColor,
                 size: 40.sp,
               ),
             ).paddingTop(10),

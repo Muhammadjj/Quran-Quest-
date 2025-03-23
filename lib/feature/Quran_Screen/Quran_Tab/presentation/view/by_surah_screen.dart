@@ -25,12 +25,18 @@ class _BySurahScreenState extends State<BySurahScreen> {
         final height = constraints.maxHeight;
         final width = constraints.maxWidth;
         return Scaffold(
-          backgroundColor: AppColors.kCharcoalGray,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          //
           body: BlocBuilder<QuranAllTabsDataBloc, QuranAllTabsDataState>(
             builder: (context, state) {
               if (state is QuranLoadingSurah) {
-                return const Center(
-                  child: CircularProgressIndicator.adaptive(),
+                return Center(
+                  child: CircularProgressIndicator.adaptive(
+                    backgroundColor:
+                        Theme.of(context).brightness == Brightness.dark
+                            ? AppColors.kGreen
+                            : AppColors.kGreen,
+                  ),
                 );
               } else if (state is QuranLoadedSurah) {
                 return ListView.builder(

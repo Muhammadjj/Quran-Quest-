@@ -7,13 +7,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:quran_quest/feature/app/app_Bloc/cubit/quran_theme_cubit.dart';
 
 import 'package:quran_quest/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const QuranQuest());
+    await tester.pumpWidget(
+      QuranQuest(
+        themeCubit: QuranThemeCubit(),
+      ),
+    );
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

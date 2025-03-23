@@ -9,7 +9,7 @@ class QuranSurahResponseModel with _$QuranSurahResponseModel {
   factory QuranSurahResponseModel({
     required int code,
     required String status,
-    required List<QuranSurahModel> data, // Ye wohi existing Surah model hai
+    required List<QuranSurahModel> data,
   }) = _QuranSurahResponseModel;
 
   factory QuranSurahResponseModel.fromJson(Map<String, dynamic> json) =>

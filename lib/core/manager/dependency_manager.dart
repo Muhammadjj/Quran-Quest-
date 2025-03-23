@@ -7,6 +7,7 @@ class DependenceManager {
     await _dashBoardRandomAyahRegisterServices();
     await _quranAllTabsRegisterServices();
     await _quranSurahDetailRegisterServices();
+    await _parahDetailRegisterServices();
   }
 
   //  ! DashBoard Random Ayah Register.
@@ -54,6 +55,18 @@ class DependenceManager {
       ..registerFactory(
         () => QuranSurahDetailBloc(quranSurahDetailUsecases: sl()),
       );
+  }
+
+  static Future<void> _parahDetailRegisterServices() async {
+    sl
+      ..registerLazySingleton<QuranParahDetailRemoteDataSource>(
+        ParahRemoteDataSourceImpl.new,
+      )
+      ..registerLazySingleton<ParahDetailRepo>(
+        () => ParahDetailRepositoryImpl(quranParahDetailRemoteDataSource: sl()),
+      )
+      ..registerLazySingleton(() => ParahDetailUsecase(parahDetailRepo: sl()))
+      ..registerFactory(() => ParahDetailBloc(parahDetailUsecase: sl()));
   }
 
   //! fetch all GetIt functions.

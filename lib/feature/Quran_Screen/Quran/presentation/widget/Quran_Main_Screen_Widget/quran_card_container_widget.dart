@@ -17,8 +17,13 @@ class QuranSectionContainer extends StatelessWidget {
       width: width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.r),
-        color: AppColors.kDimGray,
-        border: Border.all(color: AppColors.softGold, width: 1.5),
+        color: Theme.of(context).brightness == Brightness.dark
+            ? AppColors.kDimGray
+            : AppColors.kWhite,
+        border: Border.all(
+          color: AppColors.softGold,
+          width: Theme.of(context).brightness == Brightness.dark ? 1.5 : 3,
+        ),
       ),
       child: InkWell(
         onTap: () {
@@ -27,7 +32,7 @@ class QuranSectionContainer extends StatelessWidget {
         },
         child: Row(
           children: [
-            _buildLeftSideImage(),
+            _buildLeftSideImage(context: context),
             _buildRightSideImage(),
           ],
         ),
@@ -36,7 +41,7 @@ class QuranSectionContainer extends StatelessWidget {
   }
 
   //! Method to build Left Side Image with Stack
-  Widget _buildLeftSideImage() {
+  Widget _buildLeftSideImage({required BuildContext context}) {
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -44,7 +49,9 @@ class QuranSectionContainer extends StatelessWidget {
           borderRadius: BorderRadius.circular(14.r),
           child: ColorFiltered(
             colorFilter: ColorFilter.mode(
-              AppColors.kGrey.withOpacity(0.6),
+              Theme.of(context).brightness == Brightness.dark
+                  ? AppColors.kGrey.withOpacity(0.6)
+                  : AppColors.kGrey.withOpacity(0.1),
               BlendMode.modulate,
             ),
             child: Image.asset(
@@ -61,12 +68,13 @@ class QuranSectionContainer extends StatelessWidget {
           child: <Widget>[
             AutoSizeText(
               "القرآن الكريم",
-              style: TextStyle(
-                fontFamily: 'MeQuran',
-                fontSize: 24.sp,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontFamily: FontFamilyName.meQuran,
+                    fontSize: 24.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
+              //  TextStyle(
+              // ),
             ),
             SizedBox(height: 15.h), // Space between text & button
             QuranButton(

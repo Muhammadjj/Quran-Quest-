@@ -29,7 +29,7 @@ class _QuranMainScreenState extends State<QuranMainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _drawerKey,
-      backgroundColor: AppColors.kCharcoalGray,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       drawer: const DashBoardDrawerWidget(),
       body: LayoutBuilder(
         builder: (context, constraints) {

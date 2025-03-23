@@ -1,4 +1,5 @@
 import 'package:quran_quest/export/export.dart';
+import 'package:quran_quest/feature/Quran_Screen/Parah_Detail_Screen/presentation/view/parah_details_main_screen.dart';
 import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/domain/entities/quran_parah_list.dart';
 
 class ByParahScreen extends StatefulWidget {
@@ -18,6 +19,15 @@ class _ByParahScreenState extends State<ByParahScreen> {
         itemBuilder: (context, index) {
           final parah = ParahListUtils.juzNames[index];
           return ListTile(
+            onTap: () {
+              NavigationHelper.push(
+                MaterialPageRoute(
+                  builder: (_) => ParahDetailScreen(
+                    parahIndex: parah.length,
+                  ),
+                ),
+              );
+            },
             contentPadding: const EdgeInsets.all(15),
             title: Text(
               parah,

@@ -12,7 +12,13 @@ abstract class EndPoints {
 
   //! AL_QURAN ENDPOINTS
   static const String getSurahList = '/surah';
+  // * Detail Surah
   static String detailSurah({required int surahIndex}) {
     return '/surah/$surahIndex/ar.alafasy';
+  }
+
+  // * Details Juz (Parah)
+  static String detailsJuz({required int juzIndex}) {
+    return '/juz/$juzIndex/ar.asad';
   }
 }

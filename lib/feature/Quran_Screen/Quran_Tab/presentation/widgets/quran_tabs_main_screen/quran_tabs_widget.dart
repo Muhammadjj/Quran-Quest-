@@ -10,24 +10,25 @@ class QuranMajidTypeCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
-      color: AppColors.deepGreen,
-      child: const Padding(
-        padding: EdgeInsets.all(16),
+      color: Theme.of(context).brightness == Brightness.dark
+          ? AppColors.deepGreen
+          : AppColors.kWhite,
+      child: Padding(
+        padding: const EdgeInsets.all(16),
         child: Row(
           children: [
-            Icon(
+            const Icon(
               Icons.menu_book_rounded,
-              color: Colors.white,
+              // color: Colors.white,
               size: 40,
             ),
-            SizedBox(width: 12),
+            const SizedBox(width: 12),
             AutoSizeText(
               'Quran Majid Type 🕌',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
           ],
         ),
@@ -44,11 +45,15 @@ class QuranTabs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
-      color: AppColors.kCharcoalGray,
+      color: Theme.of(context).scaffoldBackgroundColor,
       child: TabBar(
         controller: tabController,
-        labelColor: Colors.white,
-        unselectedLabelColor: Colors.white60,
+        labelColor: Theme.of(context).brightness == Brightness.dark
+            ? AppColors.kWhite
+            : AppColors.kBlack,
+        unselectedLabelColor: Theme.of(context).brightness == Brightness.dark
+            ? AppColors.kBlack
+            : const Color.fromARGB(153, 130, 130, 130),
         indicatorColor: AppColors.deepGreen,
         tabs: const [
           Tab(text: 'BY SURAH'),

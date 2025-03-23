@@ -31,7 +31,7 @@ class _QuranSurahDetailScreenState extends State<QuranSurahDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.kCharcoalGray,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {
@@ -65,16 +65,20 @@ class SurahDetailContent extends StatelessWidget {
     return BlocBuilder<QuranSurahDetailBloc, QuranSurahDetailState>(
       builder: (context, state) {
         if (state is QuranSurahDetailLoadingState) {
-          return const SliverFillRemaining(
+          return SliverFillRemaining(
             child: Center(
-              child: CircularProgressIndicator.adaptive(),
+              child: CircularProgressIndicator.adaptive(
+                backgroundColor: Theme.of(context).brightness == Brightness.dark
+                    ? AppColors.kGreen
+                    : AppColors.kGreen,
+              ),
             ),
           );
         } else if (state is QuranSurahDetailLoadedState) {
           log('Loaded State: ${state.detailModel}');
           return SliverList(
             delegate: SliverChildBuilderDelegate(
-              childCount: state.detailModel.data.ayahs.length,
+              childCount: state.detailModel.data.ayahs.length + 1,
               (context, index) {
                 if (index == 0) {
                   return SurahDetailHeader(

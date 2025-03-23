@@ -24,6 +24,7 @@ class CodegenLoader extends AssetLoader {
     "welcome": "ہماری ایپ میں خوش آمدید۔",
     "comingsoon": "پریمیم رسائی کے لیے تیار ہو جائیں - پرو ورژن جلد آ رہا ہے!",
   };
+
   static const Map<String, Map<String, dynamic>> mapLocales = {
     "en": _en,
     "ur": _ur,

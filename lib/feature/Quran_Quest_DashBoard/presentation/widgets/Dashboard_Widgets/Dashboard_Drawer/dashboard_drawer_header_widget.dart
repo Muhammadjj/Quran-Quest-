@@ -22,7 +22,7 @@ class DashBoardDrawerHeaderWidget extends StatelessWidget {
           ),
           SizedBox(height: screenSize.spacing),
           AutoSizeText(
-            'Quran Majeed',
+            'Quran Quest',
             style: TextStyle(
               color: Colors.black,
               fontSize: screenSize.titleFontSize,

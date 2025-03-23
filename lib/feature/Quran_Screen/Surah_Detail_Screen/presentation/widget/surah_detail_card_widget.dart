@@ -22,11 +22,16 @@ class SurahDetailCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).brightness == Brightness.dark
+        ? AppColors.kWhite
+        : AppColors.kWhite;
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.r),
       ),
-      color: AppColors.kDimGray,
+      color: Theme.of(context).brightness == Brightness.dark
+          ? AppColors.kDimGray
+          : AppColors.kWhite,
       elevation: 4,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,18 +43,18 @@ class SurahDetailCardWidget extends StatelessWidget {
               PopupMenuItem<String>(
                 child: Text(
                   'Number : $number',
-                  style: TextStyle(
-                    color: AppColors.kWhite,
-                    fontSize: 15,
-                    fontFamily: FontFamilyName.amiriQuran,
-                  ),
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: textTheme,
+                        fontSize: 15,
+                        fontFamily: FontFamilyName.amiriQuran,
+                      ),
                 ),
               ),
               PopupMenuItem<String>(
                 child: Text(
                   'Ruku : $ruku',
                   style: TextStyle(
-                    color: AppColors.kWhite,
+                    color: textTheme,
                     fontSize: 15,
                     fontFamily: FontFamilyName.amiriQuran,
                   ),
@@ -59,7 +64,7 @@ class SurahDetailCardWidget extends StatelessWidget {
                 child: Text(
                   'Juz : $juz',
                   style: TextStyle(
-                    color: AppColors.kWhite,
+                    color: textTheme,
                     fontSize: 15,
                     fontFamily: FontFamilyName.amiriQuran,
                   ),
@@ -69,7 +74,7 @@ class SurahDetailCardWidget extends StatelessWidget {
                 child: Text(
                   'Manzil : $manzil',
                   style: TextStyle(
-                    color: AppColors.kWhite,
+                    color: textTheme,
                     fontSize: 15,
                     fontFamily: FontFamilyName.amiriQuran,
                   ),
@@ -88,7 +93,7 @@ class SurahDetailCardWidget extends StatelessWidget {
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontSize: 25.sp,
                     fontFamily: FontFamilyName.meQuran,
-                    color: AppColors.kWhite,
+                    // color: AppColors.kWhite,
                     height: 2,
                   ),
               minFontSize: 16,
