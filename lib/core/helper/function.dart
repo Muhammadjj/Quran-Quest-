@@ -10,15 +10,16 @@ dynamic initializeApp() async {
   await DependenceManager.init();
   await EasyLocalization.ensureInitialized();
 
-  // await SystemChrome.setPreferredOrientations(
-  //   [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp],
-  // );
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      systemNavigationBarIconBrightness: Brightness.light,
-      systemNavigationBarColor: Colors.black,
-      statusBarIconBrightness: Brightness.light,
-    ),
-  );
+  await SystemChrome.setPreferredOrientations(
+    [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp],
+  ).then((onValue) {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        systemNavigationBarIconBrightness: Brightness.light,
+        systemNavigationBarColor: Colors.black,
+        statusBarIconBrightness: Brightness.light,
+      ),
+    );
+  });
 }

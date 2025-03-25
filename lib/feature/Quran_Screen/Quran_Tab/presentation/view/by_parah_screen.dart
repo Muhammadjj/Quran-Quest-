@@ -1,6 +1,6 @@
 import 'package:quran_quest/export/export.dart';
-import 'package:quran_quest/feature/Quran_Screen/Parah_Detail_Screen/presentation/view/parah_details_main_screen.dart';
 import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/domain/entities/quran_parah_list.dart';
+import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/presentation/view/parah_detail_screen.dart';
 
 class ByParahScreen extends StatefulWidget {
   const ByParahScreen({super.key});
@@ -22,8 +22,8 @@ class _ByParahScreenState extends State<ByParahScreen> {
             onTap: () {
               NavigationHelper.push(
                 MaterialPageRoute(
-                  builder: (_) => ParahDetailScreen(
-                    parahIndex: parah.length,
+                  builder: (_) => ParahDetailMainScreen(
+                    parahIndex: index + 1,
                   ),
                 ),
               );

@@ -4,20 +4,15 @@ import 'package:quran_quest/feature/Quran_Quest_DashBoard/data/repo/ayah_reposit
 import 'package:quran_quest/feature/Quran_Quest_DashBoard/domain/repo/random_repo.dart';
 import 'package:quran_quest/feature/Quran_Quest_DashBoard/domain/usecases/get_random_ayah.dart';
 import 'package:quran_quest/feature/Quran_Quest_DashBoard/presentation/bloc/random_ayah_bloc.dart';
-import 'package:quran_quest/feature/Quran_Screen/Parah_Detail_Screen/data/data_source/quran_parah_detail_remote_data_source.dart';
-import 'package:quran_quest/feature/Quran_Screen/Parah_Detail_Screen/data/repo/parah_detail_repository_impl.dart';
-import 'package:quran_quest/feature/Quran_Screen/Parah_Detail_Screen/domain/repo/parah_detail_repo.dart';
-import 'package:quran_quest/feature/Quran_Screen/Parah_Detail_Screen/domain/usecases/parah_detail_usecase.dart';
-import 'package:quran_quest/feature/Quran_Screen/Parah_Detail_Screen/presentation/bloc/parah_detail_bloc.dart';
 import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/data/data_source/surah_remote_data_source.dart';
 import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/data/repo/quran_surah_repository_impl.dart';
 import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/domain/repo/quran_surah_repo.dart';
 import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/domain/usecases/quran_surah_usecases.dart';
 import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/presentation/bloc/quran_all_tabs_data_bloc.dart';
-import 'package:quran_quest/feature/Quran_Screen/Surah_Detail_Screen/data/data_source/quran_surah_detail_remote_data_source.dart';
-import 'package:quran_quest/feature/Quran_Screen/Surah_Detail_Screen/data/repo/quran_surah_detail_repository_impl.dart';
-import 'package:quran_quest/feature/Quran_Screen/Surah_Detail_Screen/domain/repo/quran_surah_detail_repo.dart';
-import 'package:quran_quest/feature/Quran_Screen/Surah_Detail_Screen/domain/usecases/quran_surah_detail_usecases.dart';
-import 'package:quran_quest/feature/Quran_Screen/Surah_Detail_Screen/presentation/bloc/quran_surah_detail_bloc.dart';
+import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/data/data_source/quran_surah_detail_remote_data_source.dart';
+import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/data/repo/quran_surah_detail_repository_impl.dart';
+import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/domain/repo/quran_surah_detail_repo.dart';
+import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/domain/usecases/quran_surah_detail_usecases.dart';
+import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/presentation/bloc/quran_surah_detail_bloc.dart';
 
 part 'dependency_manager.dart';

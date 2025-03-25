@@ -8,3 +8,10 @@ class QuranSurahDetailFetchByIndexEvent extends QuranSurahDetailEvent {
   @override
   List<Object?> get props => [surahIndex];
 }
+
+class QuranParahDetailFetchIndexEvent extends QuranSurahDetailEvent {
+  QuranParahDetailFetchIndexEvent({required this.parahIndex});
+  final int parahIndex;
+  @override
+  List<Object?> get props => [parahIndex];
+}

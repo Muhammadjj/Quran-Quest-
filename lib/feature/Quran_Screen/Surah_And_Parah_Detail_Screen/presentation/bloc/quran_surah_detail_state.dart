@@ -16,6 +16,14 @@ class QuranSurahDetailLoadedState extends QuranSurahDetailState {
   List<Object?> get props => [detailModel];
 }
 
+class QuranParahDetailLoadedState extends QuranSurahDetailState {
+  QuranParahDetailLoadedState({required this.quranParahResponseModel});
+  final QuranParahResponseModel quranParahResponseModel;
+
+  @override
+  List<Object?> get props => [quranParahResponseModel];
+}
+
 class QuranSurahDetailErrorMessage extends QuranSurahDetailState {
   QuranSurahDetailErrorMessage({required this.failure});
   final Failure failure;

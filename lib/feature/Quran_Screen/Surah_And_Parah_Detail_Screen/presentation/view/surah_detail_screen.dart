@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quran_quest/export/export.dart';
-import 'package:quran_quest/feature/Quran_Screen/Surah_Detail_Screen/presentation/bloc/quran_surah_detail_bloc.dart';
-import 'package:quran_quest/feature/Quran_Screen/Surah_Detail_Screen/presentation/widget/widget.dart';
+import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/presentation/bloc/quran_surah_detail_bloc.dart';
+import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/presentation/widget/widget.dart';
 
 class QuranSurahDetailScreen extends StatefulWidget {
   const QuranSurahDetailScreen({
