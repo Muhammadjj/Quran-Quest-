@@ -19,8 +19,8 @@ class QuranSurahDetailScreen extends StatefulWidget {
 
 class _QuranSurahDetailScreenState extends State<QuranSurahDetailScreen> {
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
+  void initState() {
+    super.initState();
     context.read<QuranSurahDetailBloc>().add(
           QuranSurahDetailFetchByIndexEvent(
             surahIndex: widget.surahIndex,

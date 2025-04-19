@@ -9,6 +9,8 @@ class SurahCardWidget extends StatelessWidget {
     required this.height,
     required this.width,
     required this.onTap,
+    required this.favoriteButton,
+    required this.isFavorite,
     super.key,
   });
 
@@ -19,6 +21,8 @@ class SurahCardWidget extends StatelessWidget {
   final double height;
   final double width;
   final void Function()? onTap;
+  final void Function()? favoriteButton;
+  final bool isFavorite;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -45,7 +49,11 @@ class SurahCardWidget extends StatelessWidget {
             SizedBox(width: width * 0.08),
             _buildSurahDetails(context: context),
             const Spacer(),
-            _buildFavoriteIcon(context: context),
+            _buildFavoriteIcon(
+              context: context,
+              favoriteButton: favoriteButton,
+              favorite: isFavorite,
+            ),
           ].addRow(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
           ),
@@ -131,11 +139,29 @@ class SurahCardWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildFavoriteIcon({required BuildContext context}) {
-    return Icons.favorite_border.toCustomIcon(
-      color: Theme.of(context).brightness == Brightness.dark
-          ? AppColors.kWhite
-          : AppColors.kBlack,
+  Widget _buildFavoriteIcon({
+    required BuildContext context,
+    required bool favorite,
+    void Function()? favoriteButton,
+  }) {
+    return IconButton(
+      onPressed: favoriteButton,
+      splashColor: AppColors.primaryGreen.withOpacity(0.6),
+      icon: isFavorite
+          ? Icons.favorite.toCustomIcon(
+              color: isFavorite
+                  ? AppColors.kRedColor
+                  : Theme.of(context).brightness == Brightness.dark
+                      ? AppColors.kWhite
+                      : AppColors.kBlack,
+            )
+          : Icons.favorite_border.toCustomIcon(
+              color: isFavorite
+                  ? AppColors.kRedColor
+                  : Theme.of(context).brightness == Brightness.dark
+                      ? AppColors.kWhite
+                      : AppColors.kBlack,
+            ),
     );
   }
 }

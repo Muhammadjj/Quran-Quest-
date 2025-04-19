@@ -31,3 +31,12 @@ final class RandomAyahError extends RandomAyahState {
   @override
   List<Object> get props => [error];
 }
+
+// ! Flash Card State
+final class QuranFlashCardState extends RandomAyahState {
+  const QuranFlashCardState({required this.quranFlashCardModel});
+  final QuranFlashCardModel quranFlashCardModel;
+
+  @override
+  List<Object> get props => [quranFlashCardModel];
+}

@@ -4,8 +4,9 @@ import 'dart:developer';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quran_quest/core/network/network.dart';
-import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/data/model/parah_model/quran_parah_response_model.dart';
 import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/data/model/Surah_Model/surah_detail_model.dart';
+import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/data/model/parah_model/quran_parah_response_model.dart';
+import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/domain/usecases/quran_parah_detail_usecases.dart';
 import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/domain/usecases/quran_surah_detail_usecases.dart';
 
 part 'quran_surah_detail_event.dart';

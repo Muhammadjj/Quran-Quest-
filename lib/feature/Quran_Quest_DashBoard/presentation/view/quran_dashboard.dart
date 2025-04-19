@@ -4,8 +4,8 @@ import 'dart:math';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quran_quest/export/export.dart';
-import 'package:quran_quest/feature/Quran_Quest_DashBoard/data/model/quran_allah_name_model.dart';
 import 'package:quran_quest/feature/Quran_Quest_DashBoard/data/model/random_card_surah_model.dart';
+import 'package:quran_quest/feature/Quran_Quest_DashBoard/domain/entities/quran_allah_name_model.dart';
 import 'package:quran_quest/feature/Quran_Quest_DashBoard/presentation/bloc/random_ayah_bloc.dart';
 import 'package:quran_quest/feature/Quran_Quest_DashBoard/presentation/widgets/widgets.dart';
 
@@ -51,15 +51,33 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           return SingleChildScrollView(
             child: Column(
               children: [
+                // ! AppBar Section
                 _buildAppBarHomeSection(width, height),
+                // ! Verses Card Section
                 _buildVersesCardHomeSection(width, height),
-                SizedBox(height: 20.h),
+                SizedBox(height: 15.h),
+                // ! Allah Name Card Section
                 QuranAllahNameCard(
                   height: height,
                   width: width,
                   quranAllahNameModel: quranAllahNameModel!,
                 ),
-                SizedBox(height: 20.h),
+                SizedBox(height: 10.h),
+                // ! Quran Flashes Cards
+                IslamicFlashCard(
+                  height: height,
+                  width: width,
+                ),
+                // ElevatedButton(
+                //   onPressed: () {
+                //     context.read<RandomAyahBloc>().add(
+                //           const QuranFlashCardEvent(
+                //             selectLanguage: 'ur.jalandhry',
+                //           ),
+                //         );
+                //   },
+                //   child: const Text('Flash Cards'),
+                // ),
               ],
             ),
           );
