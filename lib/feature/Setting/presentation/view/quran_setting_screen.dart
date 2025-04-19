@@ -5,7 +5,7 @@ import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:quran_quest/export/export.dart';
-import 'package:quran_quest/feature/app/app_Bloc/cubit/quran_theme_cubit.dart';
+import 'package:quran_quest/feature/app/app_Bloc/Quran_Theme_Cubit/quran_theme_cubit.dart';
 
 class QuranSettingScreen extends StatefulWidget {
   const QuranSettingScreen({super.key});

@@ -45,7 +45,7 @@ class _QuranTabsScreenState extends State<QuranTabsScreen>
                 child: const BySurahScreen(),
               ),
               const ByParahScreen(),
-              const FavoriteScreen(),
+              const FavoriteSurahSavedScreen(),
             ],
           ),
         ),

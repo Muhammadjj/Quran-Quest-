@@ -93,33 +93,33 @@ class GridItemUiDesign extends StatelessWidget {
   }
 
   //! Method to get the image path based on the index
-  Widget _getImagePath(int index, BuildContext context) {
-    switch (index) {
-      case 0:
-      case 1:
-      case 2:
-      case 3:
-      case 4:
-        return SvgPicture.asset(
-          AppImages.quranIconSVG,
-          colorFilter: ColorFilter.mode(
-            Theme.of(context).brightness == Brightness.dark
-                ? AppColors.kWhite
-                : AppColors.kBlack,
-            BlendMode.srcIn,
-          ),
-          height: 50,
-          width: 50,
-        );
-      default:
-        return SvgPicture.asset(
-          AppImages.quranIconSVG,
-          height: 70,
-          width: 70,
-          // fit: BoxFit.contain,
-        );
-    }
-  }
+  // Widget _getImagePath(int index, BuildContext context) {
+  //   switch (index) {
+  //     case 0:
+  //     case 1:
+  //     case 2:
+  //     case 3:
+  //     case 4:
+  //       return SvgPicture.asset(
+  //         AppImages.quranIconSVG,
+  //         colorFilter: ColorFilter.mode(
+  //           Theme.of(context).brightness == Brightness.dark
+  //               ? AppColors.kWhite
+  //               : AppColors.kBlack,
+  //           BlendMode.srcIn,
+  //         ),
+  //         height: 50,
+  //         width: 50,
+  //       );
+  //     default:
+  //       return SvgPicture.asset(
+  //         AppImages.quranIconSVG,
+  //         height: 70,
+  //         width: 70,
+  //         // fit: BoxFit.contain,
+  //       );
+  //   }
+  // }
 
   //! Method to get the title based on the index
   String _getTitle(int index) {

@@ -22,3 +22,11 @@ class QuranSurahErrorMessage extends QuranAllTabsDataState {
   @override
   List<Object?> get props => [failure];
 }
+
+// ! Favorite Surah State
+class QuranFavoriteCheckLoadedState extends QuranAllTabsDataState {
+  QuranFavoriteCheckLoadedState({required this.favoriteSurahNumbers});
+  final Set<int> favoriteSurahNumbers;
+  @override
+  List<Object?> get props => [favoriteSurahNumbers];
+}

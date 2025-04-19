@@ -1,7 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quran_quest/export/export.dart';
+import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/data/model/Favorite_Surah_Saved_Hive_Model/favorite_surah_model.dart';
 import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/presentation/bloc/quran_all_tabs_data_bloc.dart';
 import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/presentation/widgets/widget.dart';
+
+/// Helper class to manage favorite Surah logic
 
 /// 📌 Placeholder Screens
 class BySurahScreen extends StatefulWidget {
@@ -26,7 +29,6 @@ class _BySurahScreenState extends State<BySurahScreen> {
         final width = constraints.maxWidth;
         return Scaffold(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          //
           body: BlocBuilder<QuranAllTabsDataBloc, QuranAllTabsDataState>(
             builder: (context, state) {
               if (state is QuranLoadingSurah) {
@@ -34,7 +36,7 @@ class _BySurahScreenState extends State<BySurahScreen> {
                   child: CircularProgressIndicator.adaptive(
                     backgroundColor:
                         Theme.of(context).brightness == Brightness.dark
-                            ? AppColors.kGreen
+                            ? AppColors.kWhite
                             : AppColors.kGreen,
                   ),
                 );
@@ -59,6 +61,19 @@ class _BySurahScreenState extends State<BySurahScreen> {
                           },
                         );
                       },
+                      favoriteButton: () {
+                        FavoriteSurahHelper.toggleFavorite(
+                          FavoriteSurahModel(
+                            numberOfSurah: surahData.number,
+                            surahNameArabic: surahData.name,
+                            surahNameEnglish: surahData.englishName,
+                            verseCount: surahData.numberOfAyahs,
+                          ),
+                        );
+                        setState(() {});
+                      },
+                      isFavorite:
+                          FavoriteSurahHelper.isFavorite(surahData.number),
                     );
                   },
                 );

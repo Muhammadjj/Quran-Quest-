@@ -6,3 +6,11 @@ abstract class QuranAllTabsDataEvent extends Equatable {
 }
 
 class FetchQuranSurahDataEvent extends QuranAllTabsDataEvent {}
+
+// ! Favorite Surah Event
+class ToggleFavoriteSurahEvent extends QuranAllTabsDataEvent {
+  ToggleFavoriteSurahEvent({required this.favoriteSurahModel});
+  final FavoriteSurahModel favoriteSurahModel;
+  @override
+  List<Object?> get props => [favoriteSurahModel];
+}

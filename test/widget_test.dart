@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:quran_quest/feature/app/app_Bloc/cubit/quran_theme_cubit.dart';
+import 'package:quran_quest/feature/app/app_Bloc/Quran_Theme_Cubit/quran_theme_cubit.dart';
 
 import 'package:quran_quest/main.dart';
 

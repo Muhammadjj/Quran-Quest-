@@ -13,3 +13,11 @@ class FetchRandomAyahEvent extends RandomAyahEvent {
   @override
   List<Object> get props => [];
 }
+
+class QuranFlashCardEvent extends RandomAyahEvent {
+  const QuranFlashCardEvent({required this.selectLanguage});
+  final String selectLanguage;
+
+  @override
+  List<Object> get props => [selectLanguage];
+}

@@ -7,7 +7,7 @@ class DependenceManager {
     await _dashBoardRandomAyahRegisterServices();
     await _quranAllTabsRegisterServices();
     await _quranSurahDetailRegisterServices();
-    await _parahDetailRegisterServices();
+    // await _parahDetailRegisterServices();
   }
 
   //  ! DashBoard Random Ayah Register.
@@ -51,23 +51,31 @@ class DependenceManager {
       ..registerLazySingleton(
         () => QuranSurahDetailUsecases(quranSurahDetailRepo: sl()),
       )
+      ..registerLazySingleton(
+        () => ParahDetailUsecase(quranSurahDetailRepo: sl()),
+      )
       // 4. Register Bloc (highest layer)
       ..registerFactory(
-        () => QuranSurahDetailBloc(quranSurahDetailUsecases: sl()),
+        () => QuranSurahDetailBloc(
+          quranSurahDetailUsecases: sl(),
+          parahDetailUsecase: sl(),
+        ),
       );
   }
 
-  static Future<void> _parahDetailRegisterServices() async {
-    sl
-      ..registerLazySingleton<QuranParahDetailRemoteDataSource>(
-        ParahRemoteDataSourceImpl.new,
-      )
-      ..registerLazySingleton<ParahDetailRepo>(
-        () => ParahDetailRepositoryImpl(quranParahDetailRemoteDataSource: sl()),
-      )
-      ..registerLazySingleton(() => ParahDetailUsecase(parahDetailRepo: sl()))
-      ..registerFactory(() => ParahDetailBloc(parahDetailUsecase: sl()));
-  }
+  // static Future<void> _parahDetailRegisterServices() async {
+  //   sl
+  //     ..registerLazySingleton<QuranParahDetailRemoteDataSource>(
+  //       ParahRemoteDataSourceImpl.new,
+  //     )
+  //     ..registerLazySingleton<ParahDetailRepo>(
+  //       () => ParahDetailRepositoryImpl(quranParahDetailRemoteDataSource: sl()),
+  //     )
+  //     ..registerLazySingleton(() => ParahDetailUsecase(
+  //           parahDetailRepo: sl(),
+  //         ))
+  //     ..registerFactory(() => ParahDetailBloc(parahDetailUsecase: sl()));
+  // }
 
   //! fetch all GetIt functions.
   static T get<T extends Object>() {

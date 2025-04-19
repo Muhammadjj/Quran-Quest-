@@ -1,3 +1,5 @@
+// ignore_for_file: strict_raw_type, inference_failure_on_function_invocation
+
 part of 'network.dart';
 
 class NetworkHelper {

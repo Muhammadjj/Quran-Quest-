@@ -21,4 +21,9 @@ abstract class EndPoints {
   static String detailsJuz({required int juzIndex}) {
     return '/juz/$juzIndex/ar.asad';
   }
+
+  // * Quran Flash Cards Multiple Languages.
+  static String flashCard({required String selectLanguage}) {
+    return '/surah/82/editions/quran-uthmani,$selectLanguage';
+  }
 }
