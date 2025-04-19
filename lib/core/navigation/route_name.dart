@@ -12,7 +12,10 @@ class RoutesName {
   static const String quranSurahTab = 'QuranSurahTab'; //* Surah tabs Name
   static const String quranSurahDetail =
       'QuranSurahDetail'; //* Quran Surah Detail
+  static const String quranParahDetail =
+      'QuranParahDetail'; //* Quran Parah Detail
   static const String quranSettings = 'QuranSettings'; //* Quran Surah Detail
+  static const String quranFlashesCard = 'QuranFlashesCard'; //*
 }
 
 //! **********************************************     *********************  //

@@ -28,14 +28,36 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case RoutesName.quranSurahDetail:
       final args = settings.arguments! as Map<String, dynamic>;
       return CustomPageRoute(
-        page: QuranSurahDetailScreen(
-          surahIndex: args['surahIndex'] as int,
-          nameOfSurah: args['surahNameArabic'] as String,
+        page: BlocProvider(
+          create: (context) => DependenceManager.sl<QuranSurahDetailBloc>(),
+          child: QuranSurahDetailScreen(
+            surahIndex: args['surahIndex'] as int,
+            nameOfSurah: args['surahNameArabic'] as String,
+          ),
+        ),
+      );
+    //! 6.1
+    case RoutesName.quranParahDetail:
+      final args = settings.arguments! as Map<String, dynamic>;
+      return CustomPageRoute(
+        page: BlocProvider(
+          create: (context) => DependenceManager.sl<QuranSurahDetailBloc>(),
+          child: ParahDetailMainScreen(
+            parahIndex: args['parahIndex'] as int,
+          ),
         ),
       );
     //! 7
     case RoutesName.quranSettings:
       return CustomPageRoute(page: const QuranSettingScreen());
+    //! 8
+    case RoutesName.quranFlashesCard:
+      return CustomPageRoute(
+        page: BlocProvider(
+          create: (context) => DependenceManager.sl<RandomAyahBloc>(),
+          child: const FlashCardMainScreen(),
+        ),
+      );
     default:
       return MaterialPageRoute(
         builder: (_) => const Scaffold(

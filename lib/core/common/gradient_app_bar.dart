@@ -4,12 +4,14 @@ class GradientAppBar extends StatelessWidget implements PreferredSizeWidget {
   const GradientAppBar({
     required this.title,
     required this.context,
+    this.action = const [],
     this.bottom,
     super.key,
   });
   final String title;
   final PreferredSizeWidget? bottom;
   final BuildContext context;
+  final List<Widget> action;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -28,6 +30,7 @@ class GradientAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       flexibleSpace: Container().withQuranGoldenGradient(),
       elevation: 4,
+      actions: action,
       backgroundColor: Colors.transparent, //* Important for gradient effect
       bottom: bottom,
     );

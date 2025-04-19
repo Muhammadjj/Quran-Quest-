@@ -54,6 +54,9 @@ dependencies:
 # ! Using to Locally store data
   hive: ^2.2.3
   hive_flutter: ^1.1.0
+# ! Using to share this image or text or link.
+  share_plus: ^10.1.4
+  path_provider: ^2.1.5
   
   
   

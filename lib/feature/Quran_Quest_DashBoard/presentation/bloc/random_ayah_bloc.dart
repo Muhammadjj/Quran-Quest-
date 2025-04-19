@@ -50,7 +50,9 @@ class RandomAyahBloc extends Bloc<RandomAyahEvent, RandomAyahState> {
         emit(RandomAyahError(error: failure));
       },
       (QuranFlashCardModel quranFlashCardModel) {
-        if (kDebugMode) log('Data: ${quranFlashCardModel.toJson()}');
+        // if (kDebugMode) log('Data: ${quranFlashCardModel.toJson()}');
+        log('Arabic: ${quranFlashCardModel.data[0].ayahs[0].text}');
+        log('Urdu: ${quranFlashCardModel.data[1].ayahs[0].text}');
         emit(QuranFlashCardState(quranFlashCardModel: quranFlashCardModel));
       },
     );

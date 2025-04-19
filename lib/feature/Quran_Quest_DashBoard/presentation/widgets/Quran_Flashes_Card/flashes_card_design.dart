@@ -11,32 +11,30 @@ class IslamicFlashCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        NavigationHelper.push(
-          MaterialPageRoute(builder: (_) => const FlashCardMainScreen()),
-        );
-      },
-      child: Card(
-        margin: EdgeInsets.all(16.r),
-        elevation: 5,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        child: Column(
-          children: [
-            <Widget>[
-              Icons.lightbulb_circle_sharp
-                  .toCustomIcon(color: AppColors.kGreen, size: 30.sp),
-              const SizedBox(width: 6),
-              AutoSizeText(
-                'Flashes',
-                maxLines: 1,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontSize: 15.sp,
-                      fontWeight: FontWeight.w600,
-                    ),
-              ),
-            ].addRow().paddingAll(8.r),
-            Container(
+    return Card(
+      margin: EdgeInsets.all(16.r),
+      elevation: 5,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      child: Column(
+        children: [
+          <Widget>[
+            Icons.lightbulb_circle_sharp
+                .toCustomIcon(color: AppColors.kGreen, size: 30.sp),
+            const SizedBox(width: 6),
+            AutoSizeText(
+              'Flashes',
+              maxLines: 1,
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontSize: 15.sp,
+                    fontWeight: FontWeight.w600,
+                  ),
+            ),
+          ].addRow().paddingAll(8.r),
+          GestureDetector(
+            onTap: () {
+              NavigationHelper.pushNamed(RoutesName.quranFlashesCard);
+            },
+            child: Container(
               width: width,
               height: height * 0.4,
               decoration: BoxDecoration(
@@ -84,19 +82,24 @@ class IslamicFlashCard extends StatelessWidget {
                   .paddingAll(20.r)
                   .paddingTop(10),
             ),
-            <Widget>[
-              Icons.share.toCustomIcon(
+          ),
+          <Widget>[
+            Icons.share.toCustomIcon(
+              color: AppColors.kGreen,
+              size: 25.sp,
+            ),
+            SizedBox(width: width * 0.05),
+            GestureDetector(
+              onTap: () {
+                NavigationHelper.pushNamed(RoutesName.quranFlashesCard);
+              },
+              child: Icons.copy.toCustomIcon(
                 color: AppColors.kGreen,
-                size: 30.sp,
+                size: 25.sp,
               ),
-              SizedBox(width: width * 0.04),
-              Icons.copy.toCustomIcon(
-                color: AppColors.kGreen,
-                size: 30.sp,
-              ),
-            ].addRow().paddingAll(8.r),
-          ],
-        ),
+            ),
+          ].addRow().paddingAll(8.r),
+        ],
       ),
     );
   }

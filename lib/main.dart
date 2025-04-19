@@ -1,9 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quran_quest/core/helper/function.dart';
-import 'package:quran_quest/core/manager/managers.dart';
 import 'package:quran_quest/export/export.dart';
-import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/presentation/bloc/quran_surah_detail_bloc.dart';
 import 'package:quran_quest/feature/app/app_Bloc/Quran_Theme_Cubit/quran_theme_cubit.dart';
 import 'package:quran_quest/generated/codegen_loader.g.dart';
 
@@ -37,9 +35,6 @@ class QuranQuest extends StatelessWidget {
       builder: (context, child) {
         return MultiBlocProvider(
           providers: [
-            BlocProvider(
-              create: (context) => DependenceManager.sl<QuranSurahDetailBloc>(),
-            ),
             BlocProvider.value(
               value: themeCubit, // Use the initialized cubit
             ),

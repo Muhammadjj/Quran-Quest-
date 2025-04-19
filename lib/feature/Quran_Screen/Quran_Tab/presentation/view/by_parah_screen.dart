@@ -1,7 +1,6 @@
 import 'package:quran_quest/export/export.dart';
 import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/domain/entities/quran_parah_list.dart';
 import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/presentation/widgets/widget.dart';
-import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/presentation/view/parah_detail_screen.dart';
 
 class ByParahScreen extends StatefulWidget {
   const ByParahScreen({super.key});
@@ -25,12 +24,11 @@ class _ByParahScreenState extends State<ByParahScreen> {
               final parah = ParahListUtils.juzNames[index];
               return ParahCardWidget(
                 onTap: () {
-                  NavigationHelper.push(
-                    MaterialPageRoute(
-                      builder: (_) => ParahDetailMainScreen(
-                        parahIndex: index + 1,
-                      ),
-                    ),
+                  NavigationHelper.pushNamed(
+                    RoutesName.quranParahDetail,
+                    arguments: {
+                      'parahIndex': index + 1,
+                    },
                   );
                 },
                 surahNameArabic: parah['arabic'].toString(),
