@@ -1,3 +1,5 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 part of '../widgets.dart';
 
 class QuranVerseCard extends StatelessWidget {
@@ -35,7 +37,7 @@ class QuranVerseCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(12.r),
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.2),
+          color: AppColors.kBlack.withOpacity(0.2),
           blurRadius: 8,
           offset: const Offset(2, 4),
         ),
@@ -52,7 +54,6 @@ class QuranVerseCard extends StatelessWidget {
           style: Theme.of(context).textTheme.labelSmall?.copyWith(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.bold,
-                // color: AppColors.kBlack,
               ),
         ),
         AutoSizeText(
@@ -78,7 +79,13 @@ class QuranVerseCard extends StatelessWidget {
       ),
       // ! Icon Buttons
       IconButton(
-        onPressed: () {},
+        onPressed: () async {
+          await Share.share(
+            'Surat No ${randomAyah.number}: \t  ${randomAyah.surah?.name ?? 'Surah Al-Inshirah'} \n\n ${randomAyah.text} \n\n ${randomAyah.surah?.name ?? 'Surah Al-Inshirah'} \t\t[${randomAyah.juz ?? 30} : ${randomAyah.manzil ?? 7}] \n\n Please feedback me on this app.',
+            subject: 'Quran Quest',
+            sharePositionOrigin: Rect.fromLTWH(0, 0, 0, 0),
+          );
+        },
         icon: Icons.share.toCustomIcon(
           color: Theme.of(context).brightness == Brightness.dark
               ? AppColors.kWhite

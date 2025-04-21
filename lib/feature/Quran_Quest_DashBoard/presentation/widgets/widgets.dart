@@ -1,15 +1,14 @@
 import 'dart:developer';
 import 'dart:io';
 import 'dart:math' as math;
-import 'dart:ui' as ui;
 
-import 'package:flutter/rendering.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:photo_view/photo_view.dart';
 import 'package:quran_quest/core/manager/managers.dart';
 import 'package:quran_quest/export/export.dart';
 import 'package:quran_quest/feature/Quran_Quest_DashBoard/data/model/Quran_Flash_Card/quran_flash_cards_model.dart';
@@ -31,3 +30,5 @@ part 'Landing_Page_Widgets/list_of_pages.dart';
 part 'Quran_Flashes_Card/flashes_card_design.dart';
 part 'Quran_Flashes_Card/flashes_card_main_screen.dart';
 part 'Quran_Flashes_Card/flashes_card_main_screen_widget.dart';
+part 'Quran_Flashes_Card/flashes_card_capture_image_view_widget.dart';
+part 'Quran_Flashes_Card/flash_card_select_language_widget.dart';

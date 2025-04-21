@@ -68,16 +68,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   height: height,
                   width: width,
                 ),
-                // ElevatedButton(
-                //   onPressed: () {
-                //     context.read<RandomAyahBloc>().add(
-                //           const QuranFlashCardEvent(
-                //             selectLanguage: 'ur.jalandhry',
-                //           ),
-                //         );
-                //   },
-                //   child: const Text('Flash Cards'),
-                // ),
               ],
             ),
           );
