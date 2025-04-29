@@ -39,8 +39,8 @@ class QuranMajidTypeCard extends StatelessWidget {
 
 /// 📌 Tabs
 class QuranTabs extends StatelessWidget {
-  final TabController tabController;
   const QuranTabs({required this.tabController, super.key});
+  final TabController tabController;
 
   @override
   Widget build(BuildContext context) {

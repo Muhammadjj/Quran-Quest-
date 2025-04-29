@@ -58,6 +58,39 @@ Route<dynamic> generateRoute(RouteSettings settings) {
           child: const FlashCardMainScreen(),
         ),
       );
+    //! 9
+    case RoutesName.quranSurahYaseenScreen:
+      return CustomPageRoute(
+        page: BlocProvider(
+          create: (context) => DependenceManager.sl<QuranSurahDetailBloc>(),
+          child: const QuranSurahYaseenScreen(),
+        ),
+      );
+    //! 10
+    case RoutesName.quranSurahArRahmanScreen:
+      return CustomPageRoute(
+        page: BlocProvider(
+          create: (context) => DependenceManager.sl<QuranSurahDetailBloc>(),
+          child: const QuranSurahArRahmaanScreen(),
+        ),
+      );
+    //! 11
+    case RoutesName.quranSurahAlWaaqiaScreen:
+      return CustomPageRoute(
+        page: BlocProvider(
+          create: (context) => DependenceManager.sl<QuranSurahDetailBloc>(),
+          child: const QuranSurahAlWaaqiaScreen(),
+        ),
+      );
+    //! 12
+    case RoutesName.quranSurahAlKawtharScreen:
+      return CustomPageRoute(
+        page: BlocProvider(
+          create: (context) => DependenceManager.sl<QuranSurahDetailBloc>(),
+          child: const QuranSurahAlKawtharMainScreen(),
+        ),
+      );
+    //! Default case
     default:
       return MaterialPageRoute(
         builder: (_) => const Scaffold(

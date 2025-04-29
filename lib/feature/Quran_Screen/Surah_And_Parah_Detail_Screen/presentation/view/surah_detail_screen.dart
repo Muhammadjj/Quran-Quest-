@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:quran_quest/export/export.dart';
 import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/presentation/bloc/quran_surah_detail_bloc.dart';
 import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/presentation/widget/widget.dart';
@@ -40,7 +41,10 @@ class _QuranSurahDetailScreenState extends State<QuranSurahDetailScreen> {
             return CustomScrollView(
               slivers: [
                 SliverAppBarSurahDetailWidget(widget: widget, width: width),
-                SurahDetailContent(height: height, width: width),
+                _SurahDetailContent(
+                  height: height,
+                  width: width,
+                ),
               ],
             );
           },
@@ -50,15 +54,63 @@ class _QuranSurahDetailScreenState extends State<QuranSurahDetailScreen> {
   }
 }
 
-class SurahDetailContent extends StatelessWidget {
-  const SurahDetailContent({
+class _SurahDetailContent extends StatefulWidget {
+  const _SurahDetailContent({
     required this.height,
     required this.width,
-    super.key,
   });
 
   final double height;
   final double width;
+
+  @override
+  State<_SurahDetailContent> createState() => _SurahDetailContentState();
+}
+
+class _SurahDetailContentState extends State<_SurahDetailContent> {
+  final playerAudio = AudioPlayer();
+  bool isPlaying = false;
+  int? currentlyPlayingAyah; // Track the currently playing Ayah
+
+  @override
+  void dispose() {
+    playerAudio.dispose();
+    super.dispose();
+  }
+
+  Future<void> _toggleAudio(String audioUrl, int ayahIndex) async {
+    try {
+      if (currentlyPlayingAyah != ayahIndex) {
+        // Stop the previous audio if a different Ayah is playing
+        await playerAudio.stop();
+        await playerAudio.setAudioSource(
+          AudioSource.uri(Uri.parse(audioUrl)),
+          initialPosition: Duration.zero,
+          preload: false,
+        );
+        setState(() {
+          currentlyPlayingAyah = ayahIndex;
+          isPlaying = true; // Set to playing state
+        });
+        await playerAudio.play();
+      } else {
+        // Pause or resume the current audio
+        if (isPlaying) {
+          await playerAudio.pause();
+          setState(() {
+            isPlaying = false; // Set to paused state
+          });
+        } else {
+          await playerAudio.play();
+          setState(() {
+            isPlaying = true; // Set to playing state
+          });
+        }
+      }
+    } on Exception catch (e) {
+      log('Audio Error: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,9 +120,7 @@ class SurahDetailContent extends StatelessWidget {
           return SliverFillRemaining(
             child: Center(
               child: CircularProgressIndicator.adaptive(
-                backgroundColor: Theme.of(context).brightness == Brightness.dark
-                    ? AppColors.kGreen
-                    : AppColors.kGreen,
+                backgroundColor: AppColors.kGreen,
               ),
             ),
           );
@@ -83,26 +133,27 @@ class SurahDetailContent extends StatelessWidget {
                 if (index == 0) {
                   return SurahDetailHeader(
                     detailModel: state.detailModel,
-                    height: height,
-                    width: width,
+                    height: widget.height,
+                    width: widget.width,
                   );
                 } else {
                   final ayahIndex = index - 1;
                   if (ayahIndex >= 0 &&
                       ayahIndex < state.detailModel.data.ayahs.length) {
+                    final ayah = state.detailModel.data.ayahs[ayahIndex];
                     return SurahDetailCardWidget(
-                      number: state.detailModel.data.ayahs[ayahIndex].number
-                          .toString(),
-                      textOfArabic:
-                          state.detailModel.data.ayahs[ayahIndex].text,
-                      juz: state.detailModel.data.ayahs[ayahIndex].juz
-                          .toString(),
-                      manzil: state.detailModel.data.ayahs[ayahIndex].manzil
-                          .toString(),
-                      ruku: state.detailModel.data.ayahs[ayahIndex].ruku
-                          .toString(),
-                      height: height,
-                      width: width,
+                      number: ayah.number.toString(),
+                      textOfArabic: ayah.text,
+                      juz: ayah.juz.toString(),
+                      manzil: ayah.manzil.toString(),
+                      ruku: ayah.ruku.toString(),
+                      numberOfSurah: state.detailModel.data.number.toString(),
+                      currentSurahNumber: ayah.number.toString(),
+                      playerAudioPress: () =>
+                          _toggleAudio(ayah.audio, ayahIndex),
+                      isPlaying: currentlyPlayingAyah == ayahIndex && isPlaying,
+                      height: widget.height,
+                      width: widget.width,
                     );
                   } else {
                     return const SizedBox.shrink();
