@@ -82,6 +82,9 @@ class _ParahDetailMainScreenState extends State<ParahDetailMainScreen> {
                               juz: ayah.juz.toString(),
                               manzil: ayah.manzil.toString(),
                               ruku: ayah.ruku.toString(),
+                              numberOfSurah: ayah.surah!.number.toString(),
+                              currentSurahNumber: ayah.number.toString(),
+                              playerAudioPress: () {},
                               height: height,
                               width: width,
                             );

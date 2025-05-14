@@ -63,6 +63,22 @@ class _QuranMainScreenState extends State<QuranMainScreen> {
       _onButtonPressed();
       //! Navigate to Quran Tabs Screen
       NavigationHelper.pushNamed(RoutesName.quranMajidMultipleTabs);
+    } else if (index == 1) {
+      _onButtonPressed();
+      //! Navigate to Quran Surah Yaseen Screen
+      NavigationHelper.pushNamed(RoutesName.quranSurahYaseenScreen);
+    } else if (index == 2) {
+      _onButtonPressed();
+      //! Navigate to Quran Surah Ar-Rahman Screen
+      NavigationHelper.pushNamed(RoutesName.quranSurahArRahmanScreen);
+    } else if (index == 3) {
+      _onButtonPressed();
+      //! Navigate to Quran Surah Al-Waaqia Screen
+      NavigationHelper.pushNamed(RoutesName.quranSurahAlWaaqiaScreen);
+    } else if (index == 4) {
+      _onButtonPressed();
+      //! Navigate to Quran Surah Al-Kawthar Screen
+      NavigationHelper.pushNamed(RoutesName.quranSurahAlKawtharScreen);
     } else {
       return _onButtonPressed();
     }

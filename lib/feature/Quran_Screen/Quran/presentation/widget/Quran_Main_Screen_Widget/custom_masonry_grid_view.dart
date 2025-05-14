@@ -179,25 +179,24 @@ class GridItemUiDesign extends StatelessWidget {
         ),
         //! Center Content (Icon & Text)
         Align(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Expanded(
-                flex: 9,
-                child: Center(
-                  child: Text(
-                    title,
-                    // maxLines: 1,
-                    overflow: TextOverflow.fade,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30.sp,
-                          fontFamily: FontFamilyName.notoNastaliqUrdu,
-                        ),
-                  ).paddingHorizontal(1),
-                ),
+          child: <Widget>[
+            Expanded(
+              flex: 9,
+              child: Center(
+                child: Text(
+                  title,
+                  // maxLines: 1,
+                  overflow: TextOverflow.fade,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30.sp,
+                        fontFamily: FontFamilyName.notoNastaliqUrdu,
+                      ),
+                ).paddingHorizontal(1),
               ),
-            ],
+            ),
+          ].addColumn(
+            mainAxisSize: MainAxisSize.min,
           ),
         ),
       ],

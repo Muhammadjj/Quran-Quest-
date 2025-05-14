@@ -49,7 +49,7 @@ dependencies:
   json_annotation: ^4.9.0
 # ! Using Different sizes of Grid View.
   flutter_staggered_grid_view: ^0.7.0
-# ! Using to Locaal store data (small data store).
+# ! Using to Local store data (small data store).
   shared_preferences: ^2.5.2
 # ! Using to Locally store data
   hive: ^2.2.3
@@ -57,7 +57,20 @@ dependencies:
 # ! Using to share this image or text or link.
   share_plus: ^10.1.4
   path_provider: ^2.1.5
-  
+# ! Using to show this image in full screen and small screen.
+  photo_view: ^0.15.0
+# ! Using to Just Audio Player 
+  just_audio: ^0.10.0
+# ! Using Flutter Compass Plugin 
+  flutter_compass: ^0.8.1
+# ! Using to Check a Permission of Camera, Location, Storage, and Microphone.
+  permission_handler: ^12.0.0+1
+# ! Using to smooth page indicator for page view.
+  smooth_page_indicator: ^1.2.1
+# ! Using Location (Permission, geoCoordinates, current Position,).
+  geolocator: ^13.0.2
+  geocoding: ^3.0.0
+  lottie: ^3.3.1
   
   
   
@@ -93,6 +106,8 @@ flutter:
   assets:
     - assets/quran_icon/
     - assets/images/
+    - assets/lottie/
+    - assets/onboarding/
     - assets/images/flash_card_images/
     - assets/svg_images/
     - assets/translations/

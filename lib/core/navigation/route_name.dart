@@ -10,12 +10,22 @@ class RoutesName {
   //! Quran Screens
   static const String quranMajidMultipleTabs = 'QuranMajidMultipleTabs';
   static const String quranSurahTab = 'QuranSurahTab'; //* Surah tabs Name
+  //! Quran Detail Part
   static const String quranSurahDetail =
       'QuranSurahDetail'; //* Quran Surah Detail
   static const String quranParahDetail =
       'QuranParahDetail'; //* Quran Parah Detail
   static const String quranSettings = 'QuranSettings'; //* Quran Surah Detail
-  static const String quranFlashesCard = 'QuranFlashesCard'; //*
+  static const String quranFlashesCard = 'QuranFlashesCard';
+
+  static const String quranSurahYaseenScreen =
+      'QuranSurahYaseenScreen'; //* Quran Surah Yaseen
+  static const String quranSurahArRahmanScreen =
+      'QuranSurahArRahmanScreen'; //* Quran Surah Ar-Rahman
+  static const String quranSurahAlWaaqiaScreen =
+      'QuranSurahAlWaaqiaScreen'; //* Quran Surah Al-Waaqia
+  static const String quranSurahAlKawtharScreen =
+      'QuranSurahAlKawtharScreen'; //* Quran Surah Al-Kawthar
 }
 
 //! **********************************************     *********************  //

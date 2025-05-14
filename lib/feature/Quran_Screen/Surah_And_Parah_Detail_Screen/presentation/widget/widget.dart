@@ -12,3 +12,4 @@ part 'Surah_Detail_Widget/surah_detail_card_widget.dart';
 part 'Parah_Details_Widget/parah_detail_app_bar.dart';
 part 'Parah_Details_Widget/parah_detail_header_content.dart';
 part 'Parah_Details_Widget/parah_detail_card_widget.dart';
+part 'Surah_Detail_Widget/surah_alert_dialog_widget.dart';

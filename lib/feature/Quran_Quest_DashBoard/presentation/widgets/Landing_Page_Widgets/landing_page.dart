@@ -11,6 +11,11 @@ class _LandingPageState extends State<LandingPage> {
   ValueNotifier<int> bottomNavigatorTrigger = ValueNotifier(1);
   final PageStorageBucket bucket = PageStorageBucket();
 
+  @override
+  void initState() {
+    super.initState();
+  }
+
   // screen size
   late Size size;
   @override
@@ -71,7 +76,7 @@ class _LandingPageState extends State<LandingPage> {
           BottomNavigationItem(
             itemIndex: 2,
             notifier: bottomNavigatorTrigger,
-            assets: AppImages.prayIconSVG,
+            assets: AppImages.qiblaDirection,
           ),
           // const Spacer(),
           // BottomNavigationItem(

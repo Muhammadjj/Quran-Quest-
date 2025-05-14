@@ -3,6 +3,7 @@ import 'package:quran_quest/core/manager/managers.dart';
 import 'package:quran_quest/export/export.dart';
 import 'package:quran_quest/feature/Quran_Quest_DashBoard/presentation/bloc/random_ayah_bloc.dart';
 import 'package:quran_quest/feature/Quran_Quest_DashBoard/presentation/widgets/widgets.dart';
+import 'package:quran_quest/feature/Quran_Screen/Quran/presentation/widget/widget.dart';
 import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/presentation/view/by_surah_screen.dart';
 import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/presentation/view/quran_tabs_main_screen.dart';
 import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/presentation/bloc/quran_surah_detail_bloc.dart';

@@ -25,36 +25,11 @@ class IslamicFlashCardWidget extends StatefulWidget {
 class _IslamicFlashCardWidgetState extends State<IslamicFlashCardWidget> {
   final GlobalKey _repaintKey = GlobalKey();
 
-  Future<void> _captureAndShare() async {
-    try {
-      final boundary = _repaintKey.currentContext?.findRenderObject()
-          as RenderRepaintBoundary?;
-      if (boundary == null) return;
-
-      final image = await boundary.toImage();
-      final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
-      if (byteData == null) return;
-
-      final pngBytes = byteData.buffer.asUint8List();
-      final dir = await getTemporaryDirectory();
-      final path =
-          '${dir.path}/card_${DateTime.now().millisecondsSinceEpoch}.png';
-      await File(path).writeAsBytes(pngBytes);
-
-      await Share.shareXFiles([XFile(path)]);
-    } on Exception catch (e) {
-      log('Error sharing: $e');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(16.r),
-      decoration: BoxDecoration(
-        border: Border.all(color: AppColors.kGreen, width: 2),
-        borderRadius: BorderRadius.circular(16.r),
-      ),
+      decoration: _buildCardDecoration(context),
       child: Column(
         children: [
           _FlashCardContent(
@@ -67,12 +42,39 @@ class _IslamicFlashCardWidgetState extends State<IslamicFlashCardWidget> {
             manzil: widget.manzil,
           ),
           _ShareButton(
-            onTap: _captureAndShare,
+            onTap: _handleShare,
             width: widget.width,
           ),
         ],
       ),
     );
+  }
+
+  ///! Builds the card decoration with a border and rounded corners.
+  BoxDecoration _buildCardDecoration(BuildContext context) {
+    return BoxDecoration(
+      border: Border.all(
+        color: Theme.of(context).brightness == Brightness.dark
+            ? AppColors.kWhite
+            : AppColors.deepGreen,
+        width: 2,
+      ),
+      borderRadius: BorderRadius.circular(16.r),
+    );
+  }
+
+  Future<void> _handleShare() async {
+    final path = await CaptureAndShareFile.instance
+        .captureAndShare(repaintKey: _repaintKey);
+    if (path.isNotEmpty) {
+      await Share.shareXFiles(
+        [XFile(path)],
+        subject: 'Quran Flash Card',
+        text: 'Check out this Quran Flash Card!',
+      );
+    } else {
+      log('Error capturing and sharing the file.');
+    }
   }
 }
 
@@ -98,65 +100,95 @@ class _FlashCardContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        // NavigationHelper.pushNamed(RoutesName.quranFlashesCard);
-      },
+      onTap: () => _navigateToFlashCardView(context),
       child: RepaintBoundary(
         key: repaintKey,
         child: Container(
           width: width,
           height: height * 0.4,
-          decoration: BoxDecoration(
-            image: const DecorationImage(
-              image:
-                  AssetImage('assets/images/flash_card_images/flash_card1.jpg'),
-              fit: BoxFit.cover,
+          decoration: _buildContentDecoration(),
+          child: _buildContent(context),
+        ),
+      ),
+    );
+  }
+
+  BoxDecoration _buildContentDecoration() {
+    return BoxDecoration(
+      image: const DecorationImage(
+        image: AssetImage('assets/images/flash_card_images/flash_card1.jpg'),
+        fit: BoxFit.cover,
+      ),
+      borderRadius: BorderRadius.circular(15.r),
+    );
+  }
+
+  Widget _buildContent(BuildContext context) {
+    return <Widget>[
+      SizedBox(height: 40.h),
+      _buildText(
+        context,
+        arabicFlashesText,
+        fontSize: 25.sp,
+        fontWeight: FontWeight.w600,
+        fontFamily: FontFamilyName.meQuran,
+        maxLines: 2,
+      ),
+      SizedBox(height: height * 0.02),
+      _buildText(
+        context,
+        urduFlashText,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w400,
+        fontFamily: FontFamilyName.notoNastaliqUrdu,
+        maxLines: 3,
+        height: 1.5,
+      ),
+      SizedBox(height: height * 0.02),
+      _buildText(
+        context,
+        '[ $juz:$manzil الانفطار ]',
+        fontSize: 15.sp,
+        fontWeight: FontWeight.w600,
+        fontFamily: FontFamilyName.notoNastaliqUrdu,
+      ),
+      const Spacer(),
+    ].addColumn();
+  }
+
+  Widget _buildText(
+    BuildContext context,
+    String text, {
+    required double fontSize,
+    required FontWeight fontWeight,
+    required String fontFamily,
+    int maxLines = 1,
+    double? height,
+  }) {
+    return Flexible(
+      child: AutoSizeText(
+        text,
+        textAlign: TextAlign.center,
+        maxLines: maxLines,
+        style: Theme.of(context).textTheme.displayLarge?.copyWith(
+              fontSize: fontSize,
+              fontWeight: fontWeight,
+              fontFamily: fontFamily,
+              height: height,
             ),
-            borderRadius: BorderRadius.circular(15.r),
-          ),
-          child: <Widget>[
-            SizedBox(height: 40.h),
-            Flexible(
-              child: AutoSizeText(
-                arabicFlashesText,
-                textAlign: TextAlign.center,
-                maxLines: 2,
-                style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                      fontSize: 25.sp,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: FontFamilyName.meQuran,
-                    ),
-              ),
-            ),
-            SizedBox(height: height * 0.02),
-            Flexible(
-              child: AutoSizeText(
-                urduFlashText,
-                textAlign: TextAlign.center,
-                maxLines: 3,
-                style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                      fontSize: 16.sp,
-                      height: 1.5,
-                      fontWeight: FontWeight.w400,
-                      fontFamily: FontFamilyName.notoNastaliqUrdu,
-                    ),
-              ),
-            ),
-            SizedBox(height: height * 0.02),
-            Flexible(
-              child: AutoSizeText(
-                '[ $juz:$manzil الانفطار ]',
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontSize: 15.sp,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: FontFamilyName.notoNastaliqUrdu,
-                    ),
-              ),
-            ),
-            const Spacer(),
-          ].addColumn(
-            crossAxisAlignment: CrossAxisAlignment.center,
-          ),
+      ),
+    );
+  }
+
+  Future<void> _navigateToFlashCardView(BuildContext context) async {
+    final path = await CaptureAndShareFile.instance
+        .captureAndShare(repaintKey: repaintKey);
+    log('Image Location: $path');
+    await NavigationHelper.push(
+      MaterialPageRoute(
+        builder: (context) => FlashCardViewCaptureImageScreen(
+          imagePath: path,
+          repaintKey: repaintKey,
         ),
       ),
     );
@@ -181,13 +213,12 @@ class _ShareButton extends StatelessWidget {
           color: AppColors.kGreen,
           size: 20.sp,
         ),
-        SizedBox(width: width * 0.05),
+        SizedBox(width: width * 0.02),
         AutoSizeText(
           'Share',
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 fontSize: 15.sp,
                 fontWeight: FontWeight.w600,
-                fontFamily: FontFamilyName.notoNastaliqUrdu,
               ),
         ),
       ]

@@ -8,6 +8,9 @@ class FlashCardMainScreen extends StatefulWidget {
 }
 
 class _FlashCardMainScreenState extends State<FlashCardMainScreen> {
+  //! Selected language for the flash card
+  String selectedLanguage = 'ur.jalandhry';
+
   @override
   void initState() {
     super.initState();
@@ -16,33 +19,25 @@ class _FlashCardMainScreenState extends State<FlashCardMainScreen> {
 
   void _fetchRandomAyah() {
     context.read<RandomAyahBloc>().add(
-          const QuranFlashCardEvent(selectLanguage: 'ur.jalandhry'),
+          QuranFlashCardEvent(selectLanguage: selectedLanguage),
         );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppBar(context),
+      appBar: FlashCardSelectLanguage(
+        selectedLanguage: selectedLanguage,
+        onLanguageSelected: (language) {
+          setState(() {
+            //* Update the selected language
+            selectedLanguage = language;
+            //Todos=> Trigger the event to fetch random Ayah with the selected language
+            _fetchRandomAyah();
+          });
+        },
+      ),
       body: _buildBody(),
-    );
-  }
-
-  GradientAppBar _buildAppBar(BuildContext context) {
-    return GradientAppBar(
-      title: 'Flashes Screen',
-      context: context,
-      action: [
-        GestureDetector(
-          onTap: () {},
-          child: Iconsax.language_circle.toCustomIcon(
-            color: Theme.of(context).brightness == Brightness.light
-                ? AppColors.kWhite
-                : AppColors.kBlack,
-          ),
-        ),
-        SizedBox(width: 10.w),
-      ],
     );
   }
 
@@ -55,7 +50,14 @@ class _FlashCardMainScreenState extends State<FlashCardMainScreen> {
         return BlocBuilder<RandomAyahBloc, RandomAyahState>(
           builder: (context, state) {
             if (state is RandomAyahLoading) {
-              return const Center(child: CircularProgressIndicator());
+              return Center(
+                child: CircularProgressIndicator(
+                  backgroundColor:
+                      Theme.of(context).brightness == Brightness.dark
+                          ? AppColors.kWhite
+                          : AppColors.kGreen,
+                ),
+              );
             } else if (state is QuranFlashCardState) {
               return _buildFlashCardList(
                 state.quranFlashCardModel,

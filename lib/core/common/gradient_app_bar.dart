@@ -4,6 +4,7 @@ class GradientAppBar extends StatelessWidget implements PreferredSizeWidget {
   const GradientAppBar({
     required this.title,
     required this.context,
+    this.automaticallyImplyLeading = true,
     this.action = const [],
     this.bottom,
     super.key,
@@ -12,13 +13,16 @@ class GradientAppBar extends StatelessWidget implements PreferredSizeWidget {
   final PreferredSizeWidget? bottom;
   final BuildContext context;
   final List<Widget> action;
+  final bool automaticallyImplyLeading;
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: GestureDetector(
-        onTap: NavigationHelper.goBack,
-        child: Iconsax.arrow_left.toCustomIcon(),
-      ),
+      leading: automaticallyImplyLeading
+          ? GestureDetector(
+              onTap: NavigationHelper.goBack,
+              child: Iconsax.arrow_left.toCustomIcon(),
+            )
+          : null,
       title: AutoSizeText(
         title,
         style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -28,6 +32,7 @@ class GradientAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
       ).paddingBottom(15),
       centerTitle: true,
+      automaticallyImplyLeading: automaticallyImplyLeading,
       flexibleSpace: Container().withQuranGoldenGradient(),
       elevation: 4,
       actions: action,

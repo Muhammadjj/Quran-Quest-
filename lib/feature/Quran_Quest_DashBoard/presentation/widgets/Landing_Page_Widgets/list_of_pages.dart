@@ -13,11 +13,7 @@ final dashBoardScreens = [
     child: const DashBoardScreen(),
   ),
   // 3
-  Container(
-    color: AppColors.emeraldGreen,
-    height: 850,
-    width: double.infinity,
-  ),
+  const QuranQiblaDirection(),
   // 4
   // Container(
   //   color: AppColors.kBlue,

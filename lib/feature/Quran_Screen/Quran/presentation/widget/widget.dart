@@ -1,4 +1,19 @@
+import 'dart:developer';
+import 'dart:ui';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:quran_quest/export/export.dart';
+import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/presentation/bloc/quran_surah_detail_bloc.dart';
+import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/presentation/widget/widget.dart';
 part 'Quran_Main_Screen_Widget/quran_card_container_widget.dart';
 part 'Quran_Main_Screen_Widget/quran_screen_app_bar_widget.dart';
 part 'Quran_Main_Screen_Widget/custom_masonry_grid_view.dart';
+part 'Surah_Yaseen/quran_surah_yaseen_main_screen.dart';
+part 'Surah_Yaseen/Surah_Yaseen_Widgets/surah_yaseen_app_bar.dart';
+part 'Surah_Ar_Rahmaan/surah_ar_rahmaan_main_screen.dart';
+part 'Surah_Ar_Rahmaan/Surah_Ar_Rahmaan_Widget/surah_ar_rahmaan_app_bar.dart';
+part 'Surah_Al_Waaqia/surah__al_waaqia_main_screen.dart';
+part 'Surah_Al_Waaqia/Surah_Al_Waaqia_Widgets/surah_al_waaqia_app_bar.dart';
+part 'Surah_Al_Kawthar/surah_al_kawthar_main_screen.dart';
+part 'Surah_Al_Kawthar/Surah_Al_Kawthar_Widget/surah_al_kawthar_app_bar.dart';

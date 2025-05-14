@@ -1,7 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quran_quest/app/location_bloc/location_bloc.dart';
+import 'package:quran_quest/app/widget/widget.dart';
 import 'package:quran_quest/core/helper/function.dart';
 import 'package:quran_quest/export/export.dart';
+import 'package:quran_quest/feature/Quran_Quest_DashBoard/presentation/widgets/widgets.dart';
 import 'package:quran_quest/feature/app/app_Bloc/Quran_Theme_Cubit/quran_theme_cubit.dart';
 import 'package:quran_quest/generated/codegen_loader.g.dart';
 
@@ -38,6 +41,9 @@ class QuranQuest extends StatelessWidget {
             BlocProvider.value(
               value: themeCubit, // Use the initialized cubit
             ),
+            BlocProvider(
+              create: (context) => LocationBloc()..add(GetLocationEvent()),
+            ),
           ],
           child: BlocBuilder<QuranThemeCubit, ThemeState>(
             builder: (context, state) {
@@ -46,7 +52,7 @@ class QuranQuest extends StatelessWidget {
                 title: 'Quran Quest',
                 navigatorKey: NavigationHelper.navigatorKey,
                 onGenerateRoute: generateRoute,
-                initialRoute: RoutesName.landingPage,
+                // initialRoute: RoutesName.landingPage,
                 localizationsDelegates: context.localizationDelegates,
                 supportedLocales: context.supportedLocales,
                 locale: context.locale,
@@ -57,7 +63,25 @@ class QuranQuest extends StatelessWidget {
                 themeAnimationDuration: const Duration(seconds: 2),
                 themeAnimationStyle:
                     AnimationStyle(reverseCurve: Curves.easeInBack),
-                // home:
+                home: BlocBuilder<LocationBloc, LocationState>(
+                  builder: (context, state) {
+                    if (state is AskForLocationPermissionState) {
+                      return const WaitingPermissionWidget();
+                    } else if (state is LocationPermissionDeniedState) {
+                      return const PermissionDeniedWidget();
+                    } else if (state is LocationServiceDisabledState) {
+                      return const LocationServiceDisabledWidget();
+                    } else if (state is FetchCurrentLocationState) {
+                      return const LandingPage();
+                    } else {
+                      return const Scaffold(
+                        body: Center(
+                          child: Text('No Location Found Please try again'),
+                        ),
+                      );
+                    }
+                  },
+                ),
               );
             },
           ),
