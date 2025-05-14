@@ -14,3 +14,4 @@ part 'quran_button.dart';
 part 'pop_over_menu.dart';
 part 'quran_switch_button.dart';
 part 'capture_and_share_file.dart';
+part 'primary_button.dart';

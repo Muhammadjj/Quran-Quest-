@@ -11,6 +11,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:quran_quest/core/manager/managers.dart';
 import 'package:quran_quest/export/export.dart';
+import 'package:quran_quest/feature/Quran_Qibla_Direction/presentation/view/quran_qibla_direction.dart';
 import 'package:quran_quest/feature/Quran_Quest_DashBoard/data/model/Quran_Flash_Card/quran_flash_cards_model.dart';
 import 'package:quran_quest/feature/Quran_Quest_DashBoard/data/model/random_card_surah_model.dart';
 import 'package:quran_quest/feature/Quran_Quest_DashBoard/domain/entities/quran_allah_name_model.dart';
