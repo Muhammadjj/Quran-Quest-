@@ -15,5 +15,12 @@ import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/d
 import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/domain/usecases/quran_parah_detail_usecases.dart';
 import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/domain/usecases/quran_surah_detail_usecases.dart';
 import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/presentation/bloc/quran_surah_detail_bloc.dart';
+import 'package:quran_quest/feature/on_boarding_screen/data/remote_source/on_boarding_local_data_source.dart';
+import 'package:quran_quest/feature/on_boarding_screen/data/repository/on_boarding_repository.dart';
+import 'package:quran_quest/feature/on_boarding_screen/domain/repo/cache.dart';
+import 'package:quran_quest/feature/on_boarding_screen/domain/usecases/cache_first_time.dart';
+import 'package:quran_quest/feature/on_boarding_screen/domain/usecases/cache_if_user_exist_or_not.dart';
+import 'package:quran_quest/feature/on_boarding_screen/presentation/bloc/quran_onboarding_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'dependency_manager.dart';

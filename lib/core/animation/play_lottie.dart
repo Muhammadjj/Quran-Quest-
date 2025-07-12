@@ -64,6 +64,8 @@ class _PlayLottieState extends State<PlayLottie> with TickerProviderStateMixin {
     return Lottie.asset(
       widget.lottie,
       fit: BoxFit.fill,
+      height: context.height * 0.2,
+      width: context.width * 0.8,
       controller: _controller,
       onLoaded: (composition) {
         _controller

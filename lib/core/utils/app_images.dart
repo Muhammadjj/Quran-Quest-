@@ -48,4 +48,5 @@ class AppLottie {
   static const String locationService = '$_lottiePath/location_service.json';
   static const String locationNotFound = '$_lottiePath/location_not_found.json';
   static const String loadingWeather = '$_lottiePath/loading_weather.json';
+  static const String findLocation = '$_lottiePath/find_location.json';
 }

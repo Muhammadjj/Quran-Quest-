@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:just_audio/just_audio.dart';
 import 'package:quran_quest/export/export.dart';
 import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/presentation/bloc/quran_surah_detail_bloc.dart';
 import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/presentation/widget/widget.dart';
@@ -68,48 +67,18 @@ class _SurahDetailContent extends StatefulWidget {
 }
 
 class _SurahDetailContentState extends State<_SurahDetailContent> {
-  final playerAudio = AudioPlayer();
-  bool isPlaying = false;
-  int? currentlyPlayingAyah; // Track the currently playing Ayah
+  late final AudioPlayerHandler _audioHandler;
+
+  @override
+  void initState() {
+    super.initState();
+    _audioHandler = AudioPlayerHandler();
+  }
 
   @override
   void dispose() {
-    playerAudio.dispose();
+    _audioHandler.dispose();
     super.dispose();
-  }
-
-  Future<void> _toggleAudio(String audioUrl, int ayahIndex) async {
-    try {
-      if (currentlyPlayingAyah != ayahIndex) {
-        // Stop the previous audio if a different Ayah is playing
-        await playerAudio.stop();
-        await playerAudio.setAudioSource(
-          AudioSource.uri(Uri.parse(audioUrl)),
-          initialPosition: Duration.zero,
-          preload: false,
-        );
-        setState(() {
-          currentlyPlayingAyah = ayahIndex;
-          isPlaying = true; // Set to playing state
-        });
-        await playerAudio.play();
-      } else {
-        // Pause or resume the current audio
-        if (isPlaying) {
-          await playerAudio.pause();
-          setState(() {
-            isPlaying = false; // Set to paused state
-          });
-        } else {
-          await playerAudio.play();
-          setState(() {
-            isPlaying = true; // Set to playing state
-          });
-        }
-      }
-    } on Exception catch (e) {
-      log('Audio Error: $e');
-    }
   }
 
   @override
@@ -149,9 +118,14 @@ class _SurahDetailContentState extends State<_SurahDetailContent> {
                       ruku: ayah.ruku.toString(),
                       numberOfSurah: state.detailModel.data.number.toString(),
                       currentSurahNumber: ayah.number.toString(),
-                      playerAudioPress: () =>
-                          _toggleAudio(ayah.audio, ayahIndex),
-                      isPlaying: currentlyPlayingAyah == ayahIndex && isPlaying,
+                      playerAudioPress: () => _audioHandler.toggleAudio(
+                        ayah.audio,
+                        ayahIndex,
+                        setState,
+                      ),
+                      isPlaying:
+                          _audioHandler.currentlyPlayingAyah == ayahIndex &&
+                              _audioHandler.isPlaying,
                       height: widget.height,
                       width: widget.width,
                     );

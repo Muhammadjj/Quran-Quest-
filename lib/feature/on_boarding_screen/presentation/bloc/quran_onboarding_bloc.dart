@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:quran_quest/feature/on_boarding_screen/domain/usecases/cache_first_time.dart';
@@ -28,7 +30,9 @@ class QuranOnBoardingBloc
     final result = await cacheFirstTimer();
     result.fold(
       (failure) => emit(QuranError(message: failure.message)),
-      (_) => emit(UserCached()),
+      (_) {
+        emit(UserCached());
+      },
     );
   }
 
@@ -41,7 +45,10 @@ class QuranOnBoardingBloc
     final result = await checkIfUserIsFirstTimer();
     result.fold(
       (error) => emit(QuranError(message: error.message)),
-      (status) => emit(QuranStatus(isFirstTimer: status)),
+      (status) {
+        emit(QuranStatus(isFirstTimer: status));
+        log('Check this value : $status');
+      },
     );
   }
 }

@@ -7,6 +7,7 @@ class DependenceManager {
     await _dashBoardRandomAyahRegisterServices();
     await _quranAllTabsRegisterServices();
     await _quranSurahDetailRegisterServices();
+    await _quranOnBoardingScreen();
     // await _parahDetailRegisterServices();
   }
 
@@ -61,6 +62,26 @@ class DependenceManager {
           parahDetailUsecase: sl(),
         ),
       );
+  }
+
+  static Future<void> _quranOnBoardingScreen() async {
+    final prefs = await SharedPreferences.getInstance();
+    sl
+      ..registerFactory(
+        () => QuranOnBoardingBloc(
+          cacheFirstTimer: sl(),
+          checkIfUserIsFirstTimer: sl(),
+        ),
+      )
+      ..registerLazySingleton<OnBoardingLocalDataSource>(
+        () => OnBoardingLocalDataSrcImpl(prefs: sl()),
+      )
+      ..registerLazySingleton<OnBoardingRepo>(
+        () => OnBoardingRepoImpl(localDataSource: sl()),
+      )
+      ..registerLazySingleton(() => CacheFirstTime(repo: sl()))
+      ..registerLazySingleton(() => CacheIfUserExistOrNot(repo: sl()))
+      ..registerLazySingleton<SharedPreferences>(() => prefs);
   }
 
   // static Future<void> _parahDetailRegisterServices() async {
