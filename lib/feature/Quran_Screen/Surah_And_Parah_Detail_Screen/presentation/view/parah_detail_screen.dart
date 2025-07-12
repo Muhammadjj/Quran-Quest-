@@ -17,6 +17,7 @@ class ParahDetailMainScreen extends StatefulWidget {
 }
 
 class _ParahDetailMainScreenState extends State<ParahDetailMainScreen> {
+  late final AudioPlayerHandler _audioHandler;
   @override
   void initState() {
     super.initState();
@@ -25,6 +26,14 @@ class _ParahDetailMainScreenState extends State<ParahDetailMainScreen> {
         .read<QuranSurahDetailBloc>()
         .add(QuranParahDetailFetchIndexEvent(parahIndex: widget.parahIndex));
     log('Parah Detail Number : ${widget.parahIndex}');
+
+    _audioHandler = AudioPlayerHandler();
+  }
+
+  @override
+  void dispose() {
+    _audioHandler.dispose();
+    super.dispose();
   }
 
   @override

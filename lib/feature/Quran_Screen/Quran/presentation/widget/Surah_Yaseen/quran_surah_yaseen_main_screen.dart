@@ -48,10 +48,28 @@ class _QuranSurahYaseenScreenState extends State<QuranSurahYaseenScreen> {
   }
 }
 
-class _SurahYaseenContent extends StatelessWidget {
+class _SurahYaseenContent extends StatefulWidget {
   const _SurahYaseenContent({required this.height, required this.width});
   final double height;
   final double width;
+
+  @override
+  State<_SurahYaseenContent> createState() => _SurahYaseenContentState();
+}
+
+class _SurahYaseenContentState extends State<_SurahYaseenContent> {
+  late final AudioPlayerHandler _audioHandler;
+  @override
+  void initState() {
+    super.initState();
+    _audioHandler = AudioPlayerHandler();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _audioHandler.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,8 +94,8 @@ class _SurahYaseenContent extends StatelessWidget {
                 if (index == 0) {
                   return SurahDetailHeader(
                     detailModel: state.detailModel,
-                    height: height,
-                    width: width,
+                    height: widget.height,
+                    width: widget.width,
                   );
                 } else {
                   final ayahIndex = index - 1;
@@ -98,8 +116,16 @@ class _SurahYaseenContent extends StatelessWidget {
                       currentSurahNumber: state
                           .detailModel.data.ayahs[ayahIndex].number
                           .toString(),
-                      height: height,
-                      width: width,
+                      playerAudioPress: () => _audioHandler.toggleAudio(
+                        state.detailModel.data.ayahs[ayahIndex].audio,
+                        ayahIndex,
+                        setState,
+                      ),
+                      isPlaying:
+                          _audioHandler.currentlyPlayingAyah == ayahIndex &&
+                              _audioHandler.isPlaying,
+                      height: widget.height,
+                      width: widget.width,
                     );
                   } else {
                     return const SizedBox.shrink();

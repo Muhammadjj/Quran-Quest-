@@ -9,7 +9,7 @@ class WaitingPermissionWidget extends StatelessWidget {
       body: Center(
         child: <Widget>[
           const PlayLottie(
-            lottie: AppLottie.loadingWeather,
+            lottie: AppLottie.findLocation,
           ),
           AutoSizeText(
             'Looking for your location',

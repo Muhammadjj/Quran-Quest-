@@ -50,10 +50,28 @@ class _QuranSurahAlKawtharMainScreenState
   }
 }
 
-class _SurahAlKawtharContent extends StatelessWidget {
+class _SurahAlKawtharContent extends StatefulWidget {
   const _SurahAlKawtharContent({required this.height, required this.width});
   final double height;
   final double width;
+
+  @override
+  State<_SurahAlKawtharContent> createState() => _SurahAlKawtharContentState();
+}
+
+class _SurahAlKawtharContentState extends State<_SurahAlKawtharContent> {
+  late final AudioPlayerHandler _audioHandler;
+  @override
+  void initState() {
+    super.initState();
+    _audioHandler = AudioPlayerHandler();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _audioHandler.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,8 +96,8 @@ class _SurahAlKawtharContent extends StatelessWidget {
                 if (index == 0) {
                   return SurahDetailHeader(
                     detailModel: state.detailModel,
-                    height: height,
-                    width: width,
+                    height: widget.height,
+                    width: widget.width,
                   );
                 } else {
                   final ayahIndex = index - 1;
@@ -100,8 +118,16 @@ class _SurahAlKawtharContent extends StatelessWidget {
                       currentSurahNumber: state
                           .detailModel.data.ayahs[ayahIndex].number
                           .toString(),
-                      height: height,
-                      width: width,
+                      playerAudioPress: () => _audioHandler.toggleAudio(
+                        state.detailModel.data.ayahs[ayahIndex].audio,
+                        ayahIndex,
+                        setState,
+                      ),
+                      isPlaying:
+                          _audioHandler.currentlyPlayingAyah == ayahIndex &&
+                              _audioHandler.isPlaying,
+                      height: widget.height,
+                      width: widget.width,
                     );
                   } else {
                     return const SizedBox.shrink();

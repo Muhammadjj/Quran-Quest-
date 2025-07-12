@@ -1,6 +1,17 @@
+import 'dart:developer';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quran_quest/app/location_bloc/location_bloc.dart';
+import 'package:quran_quest/app/widget/widget.dart';
+import 'package:quran_quest/core/manager/managers.dart';
 import 'package:quran_quest/export/export.dart';
+import 'package:quran_quest/feature/Quran_Quest_DashBoard/presentation/widgets/widgets.dart';
+import 'package:quran_quest/feature/on_boarding_screen/data/remote_source/on_boarding_local_data_source.dart';
 import 'package:quran_quest/feature/on_boarding_screen/domain/model/on_boarding_model.dart';
+import 'package:quran_quest/feature/on_boarding_screen/presentation/bloc/quran_onboarding_bloc.dart';
 import 'package:quran_quest/feature/on_boarding_screen/presentation/widget/widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardingQuranQuest extends StatefulWidget {
@@ -42,9 +53,9 @@ class _OnBoardingQuranQuestState extends State<OnBoardingQuranQuest> {
   void nextPage() {
     if (pageController.hasClients) {
       if (pageController.page == 2) {
-        // context.read<WeatherBloc>().add(
-        //       CacheFirstTimerEvent(),
-        //     ); // * Trigger event when reaching the last page
+        context.read<QuranOnBoardingBloc>().add(
+              CacheFirstTimerEvent(),
+            ); // * Trigger event when reaching the last page
       } else {
         pageController.animateToPage(
           pageController.page!.toInt() + 1,
@@ -59,58 +70,56 @@ class _OnBoardingQuranQuestState extends State<OnBoardingQuranQuest> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.kCharcoalGray,
-      body:
-
-          //  BlocListener<WeatherBloc, WeatherState>(
-          // listener: (context, state) {
-          //   final prefs = DependenceManager.get<SharedPreferences>()
-          //     ..setBool(kFirstTimerKey, true); //* Update shared preferences
-          //   if (state is UserCached) {
-          //     if (kDebugMode) {
-          //       log('Local Store State: ${prefs.get(kFirstTimerKey)}');
-          //     }
-          //     Navigator.pushReplacement(
-          //       context,
-          //       MaterialPageRoute<dynamic>(
-          //         builder: (context) => BlocBuilder<LocationBloc, LocationState>(
-          //           builder: (context, state) {
-          //             if (state is AskForLocationPermissionState) {
-          //               return const WaitingPermissionWidget();
-          //             } else if (state is LocationPermissionDeniedState) {
-          //               return const PermissionDeniedWidget();
-          //             } else if (state is LocationServiceDisabledState) {
-          //               return const LocationServiceDisabledWidget();
-          //             } else if (state is FetchCurrentLocationState) {
-          //               return const LandingScreen();
-          //             } else {
-          //               return const Scaffold(
-          //                 body: Center(
-          //                   child: AutoSizeText('Dont worry again try 🗺️'),
-          //                 ),
-          //               );
-          //             }
-          //           },
-          //         ),
-          //       ),
-          //     );
-          //   }
-          // },
-          // child:
-          LayoutBuilder(
-        builder: (context, constraints) {
-          final height = constraints.maxHeight;
-          final width = constraints.maxWidth;
-          return Stack(
-            children: [
-              _buildPageView(height, width), // * Build the PageView
-              _buildPageIndicator(height), // * Build the Page Indicator
-              _buildNextButton(
-                height,
-                width,
-              ), // * Build the Next/Continue button
-            ],
-          );
+      body: BlocListener<QuranOnBoardingBloc, QuranOnBoardingState>(
+        listener: (context, state) {
+          final prefs = DependenceManager.get<SharedPreferences>()
+            ..setBool(kFirstTimerKey, true); //* Update shared preferences
+          if (state is UserCached) {
+            if (kDebugMode) {
+              log('Local Store State: ${prefs.get(kFirstTimerKey)}');
+            }
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute<dynamic>(
+                builder: (context) => BlocBuilder<LocationBloc, LocationState>(
+                  builder: (context, state) {
+                    if (state is AskForLocationPermissionState) {
+                      return const WaitingPermissionWidget();
+                    } else if (state is LocationPermissionDeniedState) {
+                      return const PermissionDeniedWidget();
+                    } else if (state is LocationServiceDisabledState) {
+                      return const LocationServiceDisabledWidget();
+                    } else if (state is FetchCurrentLocationState) {
+                      return const LandingPage();
+                    } else {
+                      return const Scaffold(
+                        body: Center(
+                          child: AutoSizeText('Dont worry again try 🗺️'),
+                        ),
+                      );
+                    }
+                  },
+                ),
+              ),
+            );
+          }
         },
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final height = constraints.maxHeight;
+            final width = constraints.maxWidth;
+            return Stack(
+              children: [
+                _buildPageView(height, width), // * Build the PageView
+                _buildPageIndicator(height), // * Build the Page Indicator
+                _buildNextButton(
+                  height,
+                  width,
+                ), // * Build the Next/Continue button
+              ],
+            );
+          },
+        ),
       ),
     );
   }

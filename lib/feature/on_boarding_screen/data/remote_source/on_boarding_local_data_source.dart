@@ -1,5 +1,7 @@
 // ignore_for_file: only_throw_errors
 
+import 'dart:developer';
+
 import 'package:quran_quest/core/network/network.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -20,6 +22,7 @@ class OnBoardingLocalDataSrcImpl implements OnBoardingLocalDataSource {
   Future<void> cacheFirstTimer() async {
     try {
       await prefs.setBool(kFirstTimerKey, false);
+      log('Store Value : $kFirstTimerKey');
     } on Exception catch (error) {
       throw ErrorHandler.handle(error).failure!;
     }
@@ -28,6 +31,7 @@ class OnBoardingLocalDataSrcImpl implements OnBoardingLocalDataSource {
   @override
   Future<bool> checkIfUserIsFirstTimer() async {
     try {
+      log('2nd Time : $kFirstTimerKey');
       return prefs.getBool(kFirstTimerKey) ?? true;
     } on Exception catch (error) {
       throw ErrorHandler.handle(error).failure!;

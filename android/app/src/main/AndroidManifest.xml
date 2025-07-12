@@ -10,8 +10,9 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
       
     <application
-        android:label="quran_quest"
+        android:label="Quran Quest"
         android:name="${applicationName}"
+        
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
