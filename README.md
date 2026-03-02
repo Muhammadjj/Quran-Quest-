@@ -1,4 +1,4 @@
-# 📖 Quran Quest
+![Quran Image 2](https://github.com/user-attachments/assets/6c6b626b-1459-4c02-b820-b3e9b1d92bfc)# 📖 Quran Quest
 
 Quran Quest is a modern Flutter application designed to provide an engaging and interactive Islamic learning experience.  
 It integrates beautifully designed UI, multiple features like flash cards, random Surah data, audio playback, and Qibla direction, while following **Clean Architecture + BLoC state management**.
@@ -56,9 +56,19 @@ It integrates beautifully designed UI, multiple features like flash cards, rando
 
 ---
 
+![Quran Image 1](https://github.com/user-attachments/assets/0ecc16bf-cf15-4ff6-bc24-b6b87bcc5e26)
+
+![Quran Image 2](https://github.com/user-attachments/assets/0a4fa1b9-8608-4477-a4ce-3e68e8382442)
+
+![Quran Image 3](https://github.com/user-attachments/assets/7b27638f-9aa0-4c82-ac5c-0ea36235c8e9)
+
+![Quran Image 4](https://github.com/user-attachments/assets/a4a692db-c003-4a90-8761-77c83ec56999)
+
+
 ## 🚀 Getting Started
 
-### Prerequisites
+### Prerequisites![Uploading QURAN Image 4.jpeg…]()
+
 - Flutter SDK ^3.6.1
 - Dart ^3.6.0
 - Android Studio / VS Code
