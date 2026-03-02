@@ -8,7 +8,8 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.6.1
+   sdk: ">=3.5.0 <4.0.0"
+  # sdk: ^3.6.1
 
 
 
@@ -45,15 +46,17 @@ dependencies:
 # !This is a Flutter package for a Tinder-like card swiper.✨
   flutter_card_swiper: ^7.0.2
 # ! Added dependencies: freezed_annotation for immutable models and json_annotation for JSON serialization.
-  freezed_annotation: ^2.4.1
+  freezed_annotation: ^3.1.0
   json_annotation: ^4.9.0
 # ! Using Different sizes of Grid View.
   flutter_staggered_grid_view: ^0.7.0
 # ! Using to Local store data (small data store).
   shared_preferences: ^2.5.2
 # ! Using to Locally store data
-  hive: ^2.2.3
-  hive_flutter: ^1.1.0
+  # hive: ^2.2.3
+  # hive_flutter: ^1.1.0
+  hive_ce: ^2.19.3
+  hive_ce_flutter: ^2.3.4
 # ! Using to share this image or text or link.
   share_plus: ^10.1.4
   path_provider: ^2.1.5
@@ -71,6 +74,7 @@ dependencies:
   geolocator: ^13.0.2
   geocoding: ^3.0.0
   lottie: ^3.3.1
+  flutter_riverpod: ^3.2.1
   
   
   
@@ -81,19 +85,19 @@ dev_dependencies:
   flutter_lints: ^5.0.0 
   pretty_dio_logger: ^1.4.0
   # ! Make a Hive Generate Adapter.
-  hive_generator: ^2.0.1
+  # hive_generator: ^2.0.1
+  hive_ce_generator: ^1.11.1
 #! Localization Generator.
-  easy_localization_generator: ^0.3.3 
+  easy_localization_generator: ^0.3.5 
 #! Automatically Generate file like as Freezed, Hive etc...
-  build_runner: ^2.4.15
+  build_runner: ^2.11.1 
 #! Added freezed for immutable data classes and json_serializable for JSON serialization.
-  freezed: ^2.4.1
-  json_serializable: 6.9.0
+  freezed: ^3.2.5
+  json_serializable: ^6.13.0
 #! Using Better code 
-  very_good_analysis: ^7.0.0
+  very_good_analysis: ^6.0.0
   
   
-
 
 flutter:
 
@@ -133,3 +137,4 @@ flutter:
   # see https://flutter.dev/to/font-from-package
 dependency_overrides:
   intl: ^0.20.2
+  analyzer: ^9.0.0

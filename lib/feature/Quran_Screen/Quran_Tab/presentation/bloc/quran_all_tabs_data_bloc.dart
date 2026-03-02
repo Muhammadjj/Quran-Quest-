@@ -3,7 +3,8 @@ import 'dart:developer';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_ce/hive_ce.dart';
+// import 'package:hive/hive.dart';
 import 'package:quran_quest/core/Quran_Quest_Keys/quran_key.dart';
 import 'package:quran_quest/core/network/network.dart';
 import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/data/model/Favorite_Surah_Saved_Hive_Model/favorite_surah_model.dart';
