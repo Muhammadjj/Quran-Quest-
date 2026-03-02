@@ -1,8 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
-import 'package:hive/hive.dart';
-import 'package:hive_flutter/adapters.dart';
+import 'package:hive_ce_flutter/hive_ce_flutter.dart';
+// import 'package:hive/hive.dart';
+// import 'package:hive_flutter/adapters.dart';
 import 'package:quran_quest/core/Quran_Quest_Keys/quran_key.dart';
 import 'package:quran_quest/export/export.dart';
 import 'package:quran_quest/feature/Quran_Screen/Quran_Tab/data/model/Favorite_Surah_Saved_Hive_Model/favorite_surah_model.dart';

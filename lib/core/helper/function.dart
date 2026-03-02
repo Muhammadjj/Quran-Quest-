@@ -2,7 +2,8 @@ import 'dart:developer';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/services.dart';
-import 'package:hive_flutter/adapters.dart';
+import 'package:hive_ce_flutter/hive_ce_flutter.dart';
+// import 'package:hive_flutter/adapters.dart';
 import 'package:quran_quest/core/Quran_Quest_Keys/quran_key.dart';
 import 'package:quran_quest/core/manager/managers.dart';
 import 'package:quran_quest/export/export.dart';

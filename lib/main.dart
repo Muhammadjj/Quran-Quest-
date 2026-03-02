@@ -76,7 +76,7 @@ class QuranQuest extends StatelessWidget {
                 themeAnimationCurve: Curves.fastLinearToSlowEaseIn,
                 themeAnimationDuration: const Duration(seconds: 2),
                 themeAnimationStyle:
-                    AnimationStyle(reverseCurve: Curves.easeInBack),
+                    const AnimationStyle(reverseCurve: Curves.easeInBack),
                 home: prefs.getBool(kFirstTimerKey) == true
                     ? BlocBuilder<LocationBloc, LocationState>(
                         builder: (context, state) {
