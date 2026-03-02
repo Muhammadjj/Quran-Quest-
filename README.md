@@ -56,9 +56,19 @@ It integrates beautifully designed UI, multiple features like flash cards, rando
 
 ---
 
+## Screenshots
+
+<img src="https://github.com/user-attachments/assets/0ecc16bf-cf15-4ff6-bc24-b6b87bcc5e26" width="32%"> 
+<img src="https://github.com/user-attachments/assets/0a4fa1b9-8608-4477-a4ce-3e68e8382442" width="32%"> 
+<img src="https://github.com/user-attachments/assets/a4a692db-c003-4a90-8761-77c83ec56999" width="32%"> 
+<img src="https://github.com/user-attachments/assets/7b27638f-9aa0-4c82-ac5c-0ea36235c8e9" width="32%">
+
+
+
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Flutter SDK ^3.6.1
 - Dart ^3.6.0
 - Android Studio / VS Code
