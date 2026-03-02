@@ -67,7 +67,7 @@ It integrates beautifully designed UI, multiple features like flash cards, rando
 
 ## 🚀 Getting Started
 
-### Prerequisites![Uploading QURAN Image 4.jpeg…]()
+### Prerequisites
 
 - Flutter SDK ^3.6.1
 - Dart ^3.6.0
