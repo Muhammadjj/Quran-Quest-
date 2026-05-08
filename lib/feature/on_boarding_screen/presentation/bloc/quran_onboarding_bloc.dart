@@ -2,11 +2,12 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+
 import 'package:quran_quest/feature/on_boarding_screen/domain/usecases/cache_first_time.dart';
 import 'package:quran_quest/feature/on_boarding_screen/domain/usecases/cache_if_user_exist_or_not.dart';
 
-part 'quran_onboarding_event.dart';
 part 'quran_onboadrding_state.dart';
+part 'quran_onboarding_event.dart';
 
 class QuranOnBoardingBloc
     extends Bloc<QuranOnBoardingEvent, QuranOnBoardingState> {

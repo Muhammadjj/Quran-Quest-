@@ -42,7 +42,24 @@ class Ayahs with _$Ayahs {
     bool? sajda,
   }) = _Ayahs;
 
-  factory Ayahs.fromJson(Map<String, dynamic> json) => _$AyahsFromJson(json);
+  factory Ayahs.fromJson(Map<String, dynamic> json) {
+    // Handle sajda field which might come as Map instead of bool
+    final sajdaValue = json['sajda'];
+    bool? sajdaBool;
+
+    if (sajdaValue is bool) {
+      sajdaBool = sajdaValue;
+    } else if (sajdaValue is Map) {
+      // If it's a Map, check if it has a 'result' or 'value' key
+      sajdaBool = sajdaValue['result'] as bool? ?? sajdaValue['value'] as bool?;
+    } else {
+      sajdaBool = null;
+    }
+
+    // Create a modified json map with the fixed sajda value
+    final modifiedJson = {...json, 'sajda': sajdaBool};
+    return _$AyahsFromJson(modifiedJson);
+  }
 }
 
 @freezed
