@@ -8,6 +8,7 @@ class ParahDetailUsecase
     implements UseCaseWithParams<QuranParahResponseModel, int> {
   ParahDetailUsecase({required this.quranSurahDetailRepo});
   final QuranSurahDetailRepo quranSurahDetailRepo;
+
   @override
   ResultFuture<QuranParahResponseModel> call(int params) async {
     try {

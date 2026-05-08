@@ -1,3 +1,4 @@
+// ignore: implementation_imports
 import 'package:fpdart/src/either.dart';
 import 'package:quran_quest/core/network/network.dart';
 import 'package:quran_quest/feature/Quran_Screen/Surah_And_Parah_Detail_Screen/data/data_source/quran_surah_and_parah_detail_remote_data_source.dart';

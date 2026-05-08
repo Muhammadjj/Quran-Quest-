@@ -161,7 +161,7 @@ class SurahDetailCardWidget extends StatelessWidget {
             }
           },
           child: Icon(
-            isPlaying! ? Icons.pause : Icons.play_arrow, // Toggle icon
+            isPlaying ?? false ? Icons.pause : Icons.play_arrow, // Toggle icon
             color: AppColors.kGreen,
             size: 30.sp,
           ),

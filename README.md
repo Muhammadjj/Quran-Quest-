@@ -1,88 +1,120 @@
-# 📖 Quran Quest
+# Quran Quest
 
-Quran Quest is a modern Flutter application designed to provide an engaging and interactive Islamic learning experience.  
-It integrates beautifully designed UI, multiple features like flash cards, random Surah data, audio playback, and Qibla direction, while following **Clean Architecture + BLoC state management**.
+Quran Quest is a modern Flutter application for interactive Quran learning and daily spiritual engagement.
+It combines a polished UI with Quran browsing, flash cards, Qibla direction, audio playback, localization,
+and theme support, all built with Clean Architecture and BLoC state management.
 
----
+## Overview
 
-## ✨ Features
+- Clean Architecture with BLoC/Cubit for predictable state handling
+- Multi-language support with English and Urdu
+- Dynamic light and dark themes with saved preferences
+- Location-based features for Qibla direction and permission handling
+- Quran content browsing with Surah, Parah, detail, and favorite screens
+- Interactive flash cards and random Ayah content on the dashboard
 
-- 📱 **Beautiful Onboarding Flow** with animations (Lottie + SmoothPageIndicator).
-- 🌍 **Location Access** for Qibla direction and nearby masjid features (using `geolocator` & `flutter_compass`).
-- 🕌 **Quran APIs Integration**  
-  - [QuranHub API](https://api.quranhub.com/v1)  
-  - [AlQuran Cloud API](https://api.alquran.cloud/v1)  
-- 🧾 **Flash Cards** for interactive Quran learning.
-- 🎨 **Dynamic Theming** (Light/Dark mode).
-- 🌐 **Localization** support (multi-language via `easy_localization`).
-- 🎶 **Audio Playback** using `just_audio`.
-- 📷 **PhotoView** for zoomable Quran images.
-- 💾 **Offline Support** (Hive + Shared Preferences).
-- 🔄 **Functional Programming** using `fpdart`.
-- 📊 **Responsive Design** with `flutter_screenutil`.
-- 🤝 **Open Source** – Contributions are welcome!
+## Key Features
 
----
+- Beautiful onboarding flow with Lottie animations and page indicators
+- Location permission flow for Qibla direction features
+- Real-time Qibla compass using device sensors and location data
+- Quran browsing by Surah and Parah with detailed reading screens
+- Random Ayah and Allah names cards on the dashboard
+- Flash cards with language selection for learning and revision
+- Audio playback support for Quran recitation
+- Zoomable content view with PhotoView
+- Offline-friendly local storage with SharedPreferences and Hive CE
+- Responsive UI that adapts to different screen sizes
+- Share support for content and learning cards
 
-## 🛠️ Tech Stack & Packages
+## Screens
 
-- **State Management:** `flutter_bloc`, `equatable`
-- **Networking:** `dio`, `pretty_dio_logger`
-- **Local Storage:** `hive`, `hive_flutter`, `shared_preferences`
-- **Service Locator:** `get_it`
-- **Functional Programming:** `fpdart`
-- **UI & Utils:**  
-  - `flutter_card_swiper` (Flash Cards)  
-  - `flutter_staggered_grid_view`  
-  - `flutter_svg`, `iconsax`  
-  - `auto_size_text`  
-  - `smooth_page_indicator`, `lottie`  
-- **Audio & Media:** `just_audio`, `photo_view`, `share_plus`
-- **Device & Location:** `geolocator`, `geocoding`, `flutter_compass`, `permission_handler`
-- **Code Quality:** `very_good_analysis`, `logger`
-- **Code Generation:** `freezed`, `json_serializable`, `build_runner`, `hive_generator`
+1. Onboarding screen
+2. Location permission and service handling screens
+3. Main dashboard screen
+4. Quran browsing screens
+5. Surah and Parah detail screens
+6. Flash cards screen
+7. Qibla direction screen
+8. Settings screen
 
----
+## Tech Stack
 
-## 📲 Screens & Flow
+- State management: flutter_bloc, bloc, equatable
+- Networking: dio, pretty_dio_logger
+- Dependency injection: get_it
+- Local storage: hive_ce, hive_ce_flutter, shared_preferences
+- UI and animations: flutter_screenutil, flutter_card_swiper, smooth_page_indicator, lottie, flutter_svg, iconsax, auto_size_text
+- Audio and media: just_audio, photo_view, share_plus
+- Location and sensors: geolocator, geocoding, flutter_compass, permission_handler
+- Functional programming: fpdart
+- Code generation: freezed, json_serializable, build_runner, hive_ce_generator, easy_localization_generator
+- Code quality: very_good_analysis, flutter_lints, logger
 
-1. **Onboarding Screen** → Introduction to app features.  
-2. **Location Permission Screen** → Asks for location to provide Qibla & nearby features.  
-3. **Home Screen** → Main dashboard with Quran features, flash cards, Surah data.  
-4. **Additional Features**:  
-   - Random Surah fetch  
-   - Themes (Light/Dark/System)  
-   - Islamic resources integration  
+## Architecture
 
----
+The project follows a layered structure:
 
-## Screenshots
+- Presentation layer for UI, pages, widgets, BLoC, and Cubits
+- Domain layer for entities, use cases, and repository contracts
+- Data layer for remote data sources, repository implementations, and models
+- Core layer for shared helpers, themes, navigation, utilities, and dependency management
 
-<img src="https://github.com/user-attachments/assets/0ecc16bf-cf15-4ff6-bc24-b6b87bcc5e26" width="32%"> 
-<img src="https://github.com/user-attachments/assets/0a4fa1b9-8608-4477-a4ce-3e68e8382442" width="32%"> 
-<img src="https://github.com/user-attachments/assets/a4a692db-c003-4a90-8761-77c83ec56999" width="32%"> 
-<img src="https://github.com/user-attachments/assets/7b27638f-9aa0-4c82-ac5c-0ea36235c8e9" width="32%">
+## APIs Used
 
+- QuranHub API: https://api.quranhub.com/v1
+- AlQuran Cloud API: https://api.alquran.cloud/v1
 
+## Project Structure
 
-## 🚀 Getting Started
+- lib/app: app-level blocs and permission handling
+- lib/core: shared helpers, themes, navigation, utilities, and managers
+- lib/feature: all feature modules and screens
+- assets/translations: localization files
+- assets/images, assets/lottie, assets/svg_images, assets/fonts: app assets
+
+## Getting Started
 
 ### Prerequisites
 
-- Flutter SDK ^3.6.1
-- Dart ^3.6.0
-- Android Studio / VS Code
+- Flutter SDK with Dart 3.5 or newer
+- Android Studio, VS Code, or another Flutter-compatible IDE
 
-### Installation
+### Install
+
 ```bash
-# Clone repository
-git clone https://github.com/your-username/quran_quest.git
-
-# Go into the project directory
+git clone https://github.com/Muhammadjj/Quran-Quest-.git
 cd quran_quest
-
-# Get dependencies
 flutter pub get
-
-# Run app
+flutter pub run build_runner build --delete-conflicting-outputs
 flutter run
+```
+
+## Localization
+
+- English: assets/translations/en.json
+- Urdu: assets/translations/ur.json
+
+## Screenshots
+
+<img src="https://github.com/user-attachments/assets/0ecc16bf-cf15-4ff6-bc24-b6b87bcc5e26" width="32%">
+<img src="https://github.com/user-attachments/assets/0a4fa1b9-8608-4477-a4ce-3e68e8382442" width="32%">
+<img src="https://github.com/user-attachments/assets/a4a692db-c003-4a90-8761-77c83ec56999" width="32%">
+<img src="https://github.com/user-attachments/assets/7b27638f-9aa0-4c82-ac5c-0ea36235c8e9" width="32%">
+
+## Contributing
+
+Contributions, issues, and feature suggestions are welcome.
+
+## Security and Usage
+
+- This repository is public for review and showcase purposes.
+- The source code is protected by the project license and may not be reused,
+	copied, or redistributed without written permission.
+- Do not commit API keys, secrets, or private credentials to the repository.
+- If you need stronger protection, keep the repository private and only publish
+	releases or sanitized source snapshots.
+
+## License
+
+This project is licensed under the Quran Quest Proprietary License.
