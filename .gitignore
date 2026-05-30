@@ -60,3 +60,5 @@ android/key.properties
 # Release artifacts (build locally only)
 *.apk
 /build/
+
+.ADVANCED_RELEASE_TIPS.md
