@@ -43,3 +43,22 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# 🔐 SECURITY - Do NOT commit these files!
+# Android Signing Keystore
+*.jks
+*.keystore
+upload-keystore.jks
+android/app/upload-keystore.jks
+android/key.properties
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Release artifacts (build locally only)
+*.apk
+/build/
+
+.ADVANCED_RELEASE_TIPS.md

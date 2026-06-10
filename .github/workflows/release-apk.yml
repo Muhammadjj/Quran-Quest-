@@ -1,0 +1,136 @@
+name: Build and Release APK
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag (e.g., v1.0.0)'
+        required: true
+        default: 'v1.0.0'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.x'
+          channel: 'stable'
+
+      - name: Validate release tag
+        run: |
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            RELEASE_TAG="${GITHUB_REF_NAME}"
+          else
+            RELEASE_TAG="${{ github.event.inputs.version }}"
+          fi
+          if [[ -z "${RELEASE_TAG}" ]]; then
+            echo "Release tag is empty"
+            exit 1
+          fi
+          if [[ ! "${RELEASE_TAG}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+([-.].*)?$ ]]; then
+            echo "Invalid tag format: ${RELEASE_TAG}. Use v1.2.3"
+            exit 1
+          fi
+          echo "RELEASE_TAG=${RELEASE_TAG}" >> "$GITHUB_ENV"
+          echo "Using release tag: ${RELEASE_TAG}"
+
+      - name: Setup release signing files
+        env:
+          KEYSTORE_FILE: ${{ secrets.KEYSTORE_FILE }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: |
+          if [[ -z "$KEYSTORE_FILE" || -z "$KEYSTORE_PASSWORD" || -z "$KEY_ALIAS" || -z "$KEY_PASSWORD" ]]; then
+            echo "Missing one or more signing secrets"
+            exit 1
+          fi
+          echo "$KEYSTORE_FILE" | base64 -d > android/app/upload-keystore.jks
+          cat > android/key.properties <<EOF
+          storePassword=$KEYSTORE_PASSWORD
+          keyPassword=$KEY_PASSWORD
+          keyAlias=$KEY_ALIAS
+          storeFile=upload-keystore.jks
+          EOF
+      
+      - name: Get dependencies
+        run: flutter pub get
+      
+      - name: Build APK Release
+        run: flutter build apk --release
+
+      - name: Build AAB Release
+        run: flutter build appbundle --release
+      
+      - name: Verify APK
+        run: |
+          if [ ! -f build/app/outputs/flutter-apk/app-release.apk ]; then
+            echo "APK not found!"
+            exit 1
+          fi
+          ls -lh build/app/outputs/flutter-apk/app-release.apk
+
+      - name: Verify AAB
+        run: |
+          if [ ! -f build/app/outputs/bundle/release/app-release.aab ]; then
+            echo "AAB not found!"
+            exit 1
+          fi
+          ls -lh build/app/outputs/bundle/release/app-release.aab
+      
+      - name: Create Release Notes
+        id: release_notes
+        run: |
+          VERSION=${RELEASE_TAG}
+          echo "release_body<<EOF" >> $GITHUB_OUTPUT
+          echo "## 📱 Quran Quest Release $VERSION" >> $GITHUB_OUTPUT
+          echo "" >> $GITHUB_OUTPUT
+          echo "### 📋 Features" >> $GITHUB_OUTPUT
+          echo "- Enhanced Quran reading experience" >> $GITHUB_OUTPUT
+          echo "- Improved audio playback" >> $GITHUB_OUTPUT
+          echo "- Better location detection" >> $GITHUB_OUTPUT
+          echo "" >> $GITHUB_OUTPUT
+          echo "### 🐛 Bug Fixes" >> $GITHUB_OUTPUT
+          echo "- Fixed performance issues" >> $GITHUB_OUTPUT
+          echo "- Improved app stability" >> $GITHUB_OUTPUT
+          echo "" >> $GITHUB_OUTPUT
+          echo "### 📥 Installation" >> $GITHUB_OUTPUT
+          echo "- Download the APK file below" >> $GITHUB_OUTPUT
+          echo "- Enable 'Unknown Sources' in settings" >> $GITHUB_OUTPUT
+          echo "- Install the APK" >> $GITHUB_OUTPUT
+          echo "- For Google Play Store, use the .aab file" >> $GITHUB_OUTPUT
+          echo "" >> $GITHUB_OUTPUT
+          echo "### 📊 Changelog" >> $GITHUB_OUTPUT
+          echo "\`\`\`" >> $GITHUB_OUTPUT
+          git log --oneline -n 20 >> $GITHUB_OUTPUT || echo "No git history"
+          echo "\`\`\`" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+      
+      - name: Upload Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.RELEASE_TAG }}
+          files: |
+            build/app/outputs/flutter-apk/app-release.apk
+            build/app/outputs/bundle/release/app-release.aab
+          body: ${{ steps.release_notes.outputs.release_body }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Clean up
+        if: always()
+        run: |
+          rm -f android/app/upload-keystore.jks android/key.properties
+          echo "Cleanup completed"
